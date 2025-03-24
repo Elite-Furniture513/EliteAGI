@@ -1,0 +1,136 @@
+/* General styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Header with cool effect */
+  header {
+    background: linear-gradient(to right, black, red);
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  header h1 {
+    font-size: 3rem;
+    margin: 0;
+    animation: slideIn 1.5s ease-out forwards;
+    letter-spacing: 2px;
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    background-color: #222;
+    border-top: 2px solid red;
+    border-bottom: 2px solid red;
+  }
+  
+  nav ul li {
+    margin: 0 20px;
+  }
+  
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  nav ul li a:hover {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  /* Main Section */
+  .intro {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #e0e0e0;
+    color: #111;
+  }
+  
+  .intro h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: black;
+  }
+  
+  .intro p {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  /* Footer with fading gray */
+  footer {
+    background: linear-gradient(to top, #666, #999);
+    color: #f0f0f0;
+    text-align: center;
+    padding: 25px 0;
+    font-size: 0.95rem;
+    margin-top: 50px;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Button Styling */
+  button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: red;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+    }
+  
+    nav ul li {
+      margin: 10px 0;
+    }
+  
+    header h1 {
+      font-size: 2rem;
+    }
+  
+    .intro h2 {
+      font-size: 1.5rem;
+    }
+  
+    .intro p {
+      font-size: 1rem;
+    }
+  }
+  
