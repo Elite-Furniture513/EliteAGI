@@ -4,53 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Delivery Cost Calculator</title>
-  <link rel="stylesheet" href="CSS/styles.css">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      max-width: 600px;
+      width: 100%;
+      margin: 80px auto;
+    }
+    .result {
+      margin-top: 25px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+  <script>
+    function addItemInput() {
+      const itemList = document.getElementById("itemList");
+      const input = document.createElement("input");
+      input.type = "number";
+      input.name = "item_price";
+      input.step = "0.01";
+      input.placeholder = "Item price ($)";
+      input.required = true;
+      itemList.appendChild(input);
+    }
+  </script>
 </head>
 <body>
   <header>
-    <h1>Delivery Cost Calculator</h1>
+    <h1>Elite Furniture - Delivery Quote Calculator</h1>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="#">Calculator</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="calculator">
-      <h2>Calculate Your Delivery Cost</h2>
-      <form id="calcForm">
-        <label for="distance">Distance (miles):</label>
-        <input type="number" id="distance" required>
-        
-        <label for="weight">Weight (lbs):</label>
-        <input type="number" id="weight" required>
-        
-        <button type="button" onclick="runPython()">Calculate</button>
+    <div class="container">
+      <h2>🛋️ Get Your Delivery Quote</h2>
+      <form method="post">
+        <label for="zipcode">ZIP Code:</label>
+        <input type="text" id="zipcode" name="zipcode" required placeholder="e.g. 45237">
+
+        <label>Item Prices:</label>
+        <div id="itemList" class="item-list">
+          <input type="number" name="item_price" step="0.01" placeholder="Item price ($)" required>
+        </div>
+        <button type="button" class="add-btn" onclick="addItemInput()">➕ Add Another Item</button>
+
+        <label for="assembly">Assembly Needed?</label>
+        <select name="assembly" id="assembly">
+          <option value="no">No</option>
+          <option value="yes">Yes (+$45)</option>
+        </select>
+
+        <label for="finance">Using Financing?</label>
+        <select name="finance" id="finance">
+          <option value="no">No</option>
+          <option value="yes">Yes (No Tax)</option>
+        </select>
+
+        <input type="submit" value="Calculate Total">
       </form>
-      <p id="result"></p>
-    </section>
+
+      {% if result %}
+        <div class="result">
+          {{ result|safe }}
+        </div>
+      {% endif %}
+    </div>
   </main>
 
   <footer>
     <p>&copy; 2025 Elite Furniture. All rights reserved.</p>
   </footer>
-
-  <script>
-    async function runPython() {
-      let distance = document.getElementById("distance").value;
-      let weight = document.getElementById("weight").value;
-      
-      const response = await fetch("/calculate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ distance: distance, weight: weight })
-      });
-      
-      const data = await response.json();
-      document.getElementById("result").innerText = "Delivery Cost: $" + data.cost;
-    }
-  </script>
 </body>
 </html>
