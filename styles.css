@@ -1,136 +1,243 @@
-/* General styles */
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    line-height: 1.6;
+/* =========================================================
+   0 ▸ Brand tokens & motion helpers
+   ========================================================= */
+   :root {
+    --clr‑1: #9f0c10;   /* crimson        */
+    --clr‑2: #db5836;   /* orange‑red     */
+    --clr‑3: #ff9d3b;   /* amber          */
+    --clr‑4: #ffd151;   /* gold           */
+    --text:   #222;
+    --bg:     #f5f5f5;
+    --card:   #fff;
+    --border: #e2e2e2;
+    --radius: 0.55rem;
+    --shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   }
   
-  /* Header with cool effect */
+  /* Keyframes: infinite sweep for header / footer gradients */
+  @keyframes sweep {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* =========================================================
+     1 ▸ Global reset & typography
+     ========================================================= */
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+  
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.65;
+    scroll-behavior: smooth;
+  }
+  
+  /* =========================================================
+     2 ▸ Animated header (sleek, low‑ink, infinite color fade)
+     ========================================================= */
   header {
-    background: linear-gradient(to right, black, red);
-    color: white;
-    padding: 30px 0;
+    --grad: linear-gradient(120deg, var(--clr‑1), var(--clr‑2), var(--clr‑3), var(--clr‑4));
+    background: var(--grad);
+    background-size: 300% 300%;
+    animation: sweep 12s linear infinite;
+    color: #fff;
+    padding: 2.5rem 0 2rem;
     text-align: center;
-    position: relative;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    box-shadow: var(--shadow);
   }
   
   header h1 {
-    font-size: 3rem;
     margin: 0;
-    animation: slideIn 1.5s ease-out forwards;
-    letter-spacing: 2px;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    backdrop-filter: drop-shadow(2px 2px 4px rgba(0,0,0,.35));
   }
   
-  @keyframes slideIn {
-    0% {
-      transform: translateY(-100%);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
+  /* Navigation: glassy tabs */
+  nav {
+    margin-top: 1.35rem;
+    backdrop-filter: blur(6px) saturate(180%);
   }
   
   nav ul {
-    list-style: none;
-    padding: 0;
     display: flex;
     justify-content: center;
-    margin-top: 15px;
-    background-color: #222;
-    border-top: 2px solid red;
-    border-bottom: 2px solid red;
+    gap: 1.25rem;
+    list-style: none;
+    padding: 0.4rem 1rem;
   }
   
-  nav ul li {
-    margin: 0 20px;
-  }
-  
-  nav ul li a {
-    color: white;
+  nav a {
+    color: #fff;
     text-decoration: none;
-    font-weight: bold;
-    padding: 10px;
-    display: block;
-    transition: background 0.3s, color 0.3s;
+    font-weight: 600;
+    position: relative;
+    padding: 0.45rem 0.75rem;
+    border-radius: 0.4rem;
+    transition: transform 0.25s, background 0.25s;
   }
   
-  nav ul li a:hover {
-    background-color: red;
-    color: white;
-    border-radius: 5px;
+  nav a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.15);
+    opacity: 0;
+    transition: opacity 0.25s;
   }
   
-  /* Main Section */
-  .intro {
-    padding: 60px 20px;
+  nav a:hover,
+  nav a:focus-visible {
+    transform: translateY(-2px);
+  }
+  
+  nav a:hover::after,
+  nav a:focus-visible::after {
+    opacity: 1;
+  }
+  
+  /* =========================================================
+     3 ▸ Main content cards (terms, policies, etc.)
+     ========================================================= */
+  main {
+    max-width: 920px;
+    margin: 3.75rem auto;
+    padding: 0 1rem;
+  }
+  
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem 1.75rem 1.7rem;
+    margin-bottom: 2.25rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Left accent ribbon */
+  section::before {
+    content: "";
+    position: absolute;
+    inset: 0 100% 0 0;
+    width: 8px;
+    background: linear-gradient(var(--clr‑1), var(--clr‑4));
+    animation: sweep 6s linear infinite;
+  }
+  
+  /* Headings */
+  section h2 {
+    font-size: 1.35rem;
+    color: var(--clr‑2);
+    margin: 0 0 1.1rem;
+    line-height: 1.25;
+  }
+  
+  /* Ordered list with modern counters */
+  section ol {
+    counter-reset: item;
+    margin-left: 0;
+    padding-left: 1.65rem;
+  }
+  
+  section ol li {
+    counter-increment: item;
+    list-style: none;
+    margin-bottom: 0.7rem;
+    position: relative;
+  }
+  
+  section ol li::before {
+    content: counters(item, ".") ".";
+    position: absolute;
+    left: -1.65rem;
+    top: 0;
+    font-weight: 600;
+    color: var(--clr‑1);
+  }
+  
+  /* Helpers */
+  strong { color: var(--clr‑1); }
+  em     { font-style: italic;  }
+  .closing {
+    margin-top: 2.5rem;
     text-align: center;
-    background-color: #e0e0e0;
-    color: #111;
+    font-size: 1.05rem;
+    font-weight: 600;
   }
   
-  .intro h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: black;
-  }
-  
-  .intro p {
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
-  /* Footer with fading gray */
+  /* =========================================================
+     4 ▸ Fancy footer with pulsing gradient & wave
+     ========================================================= */
   footer {
-    background: linear-gradient(to top, #666, #999);
-    color: #f0f0f0;
+    --grad: linear-gradient(135deg, var(--clr‑1), var(--clr‑2), var(--clr‑3));
+    background: var(--grad);
+    background-size: 400% 400%;
+    animation: sweep 18s linear infinite;
+    color: #fdfdfd;
     text-align: center;
-    padding: 25px 0;
-    font-size: 0.95rem;
-    margin-top: 50px;
-    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.2);
+    padding: 2.75rem 1rem 3rem;
+    position: relative;
   }
   
-  /* Button Styling */
+  footer p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  
+  /* Little wave at top of footer */
+  footer::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: radial-gradient(circle at 50% -20px, transparent 36px, var(--bg) 37px);
+  }
+  
+  /* =========================================================
+     5 ▸ Buttons (re‑use brand colors)
+     ========================================================= */
   button {
-    background-color: black;
-    color: white;
+    background: var(--clr‑1);
+    color: #fff;
     border: none;
-    padding: 10px 20px;
-    margin-top: 20px;
+    border-radius: 0.35rem;
+    padding: 0.6rem 1.2rem;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: transform 0.25s, background 0.25s;
   }
   
-  button:hover {
-    background-color: red;
+  button:hover,
+  button:focus-visible {
+    background: var(--clr‑2);
+    transform: translateY(-2px);
   }
   
-  /* Responsive Design */
+  /* =========================================================
+     6 ▸ Responsive adjustments
+     ========================================================= */
   @media (max-width: 768px) {
-    nav ul {
-      flex-direction: column;
-    }
-  
-    nav ul li {
-      margin: 10px 0;
-    }
-  
-    header h1 {
-      font-size: 2rem;
-    }
-  
-    .intro h2 {
-      font-size: 1.5rem;
-    }
-  
-    .intro p {
-      font-size: 1rem;
-    }
+    nav ul       { flex-direction: column; gap: 0.75rem; }
+    header h1    { font-size: 2rem;  }
+    section      { padding: 1.65rem 1.35rem; }
+    section h2   { font-size: 1.2rem; }
   }
+  
+  /* Smooth anchor jump offset (if you link #sections) */
+  :target { scroll-margin-top: 110px; }
   
