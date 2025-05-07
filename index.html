@@ -2,34 +2,121 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Elite Furniture</title>
-  <link rel="stylesheet" href="CSS/styles1.css" />
+  <link rel="stylesheet" href="CSS/styles.css" />
 </head>
 <body>
-  <header>
-    <h1>ELITE FURNITURE</h1>
+
+<div class="top-strip">
+  <div class="why-elite-static">Why Elite?</div>
+  <div class="elite-benefits-container">
+    <div class="elite-benefits-scroll">
+      <div class="benefit"><span>🛋️</span> Affordable Pricing</div>
+      <div class="benefit"><span>🚚</span> Next-Day Delivery</div>
+      <div class="benefit"><span>💳</span> Easy Financing</div>
+      <div class="benefit"><span>⭐</span> Trusted by Thousands</div>
+      <div class="benefit"><span>🛠️</span> Quality That Lasts</div>
+    </div>
+  </div>
+</div>
+
+<header>Elite Furniture</div>
+  <nav>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="calculator.html">calculator</a></li>
-        <li><a href="terms.html">Terms & Conditions</a></li>
-        <li><a href="page1.html">Catolog</a></li>
+        <a href="index.html">Home</a>
+        <a href="calculator.html">calculator</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="page1.html">Catolog</a>
       </ul>
     </nav>
-  </header>
+  </nav>
+</header>
 
-  <main>
-    <section class="intro">
-      <h2>Welcome to Elite Furniture</h2>
-      <p>We offer high-quality furniture with modern design and comfort.</p>
-      <button onclick="location.href='page1.html'">Shop Now</button>
+<section class="hero">
+  <div class="hero-text">
+    <h1><span id="animatedText">Sofas personalized to you</span></h1>
+    <p>Customized comfort for your dream space</p>
+  </div>
+</section>
 
-  
-  </main>
+<section class="products">
+  <div class="item-box">
+    <div class="item-text">
+      <h3>Sofa Collection</h3>
+      <p>Modern, comfy, and affordable sofas to complete your living room.</p>
+    </div>
+    <div class="item-arrow">
+      <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-right.png"/>
+    </div>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 Elite Furniture. All rights reserved.</p>
-  </footer>
+  <div class="item-box">
+    <div class="item-text">
+      <h3>Loveseat Collection</h3>
+      <p>Perfect-sized loveseats for any room with next-day delivery.</p>
+    </div>
+    <div class="item-arrow">
+      <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-right.png"/>
+    </div>
+  </div>
+</section>
+<section class="why-elite">
+  <h2 class="section-title">Why Choose Elite Furniture?</h2>
+  <div class="features">
+    <div class="feature-box">
+      <div class="icon">
+        <img src="https://img.icons8.com/ios-filled/50/delivery.png" alt="Delivery" />
+      </div>
+      <h3>Next-Day Delivery</h3>
+      <p>We bring your dream furniture to your doorstep — fast and hassle-free.</p>
+    </div>
+
+    <div class="feature-box">
+      <div class="icon">
+        <img src="https://img.icons8.com/ios-filled/50/tags.png" alt="Affordable" />
+      </div>
+      <h3>Affordable Luxury</h3>
+      <p>High-quality furniture without the high-end price tag. Comfort meets value.</p>
+    </div>
+
+    <div class="feature-box">
+      <div class="icon">
+        <img src="https://img.icons8.com/ios-filled/50/thumb-up.png" alt="Trusted" />
+      </div>
+      <h3>Trusted Quality</h3>
+      <p>Thousands of happy customers and furniture built to last.</p>
+    </div>
+
+    <div class="feature-box">
+      <div class="icon">
+        <img src="https://img.icons8.com/ios-filled/50/money.png" alt="Financing" />
+      </div>
+      <h3>Flexible Financing</h3>
+      <p>Easy payment plans that fit your budget — apply in minutes.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  &copy; 2025 Elite Furniture | Privacy | Delivery Info
+</footer>
+
+<script>
+  const phrases = [
+    "Sofas personalized to you",
+    "Loveseats that fit your space",
+    "Furniture made for comfort",
+  ];
+  let i = 0;
+  const animatedText = document.getElementById("animatedText");
+
+  setInterval(() => {
+    i = (i + 1) % phrases.length;
+    animatedText.textContent = phrases[i];
+  }, 3000);
+</script>
+
 </body>
 </html>

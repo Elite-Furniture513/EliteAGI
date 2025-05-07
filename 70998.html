@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bladen Sofa – Elite Furniture</title>
+
+  <!-- global site styles (keep your own) -->
+  <link rel="stylesheet" href="CSS/styles.css">
+
+  <!-- page‑specific gallery / light‑box styles -->
+  <link rel="stylesheet" href="CSS/Product.css">
+</head>
+<body>
+  <!-- ░░ Header (re‑use from the rest of your site) ░░ -->
+  <header>
+    <h1>ELITE FURNITURE</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Calclator.html">Calculator</a></li>
+        <li><a href="terms.html">Terms&nbsp;&amp;&nbsp;Conditions</a></li>
+        <li><a href="page1.html">Catalog</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ░░ Product ░░ -->
+  <main class="product-page">
+    <!-- Media column -->
+    <figure class="product-page__media">
+      <img id="heroImg"
+           src="images/sets/70998-38-35.jpg"
+           alt="Bladen sofa & loveseat in living‑room setting">
+
+      <!-- Thumbnails – add / remove as many as you want -->
+      <div class="thumbs">
+        <img src="images/sets/70998-38-35.jpg"
+             alt="Main view"
+             data-full="images/sets/70998-38-35.jpg">
+        <img src="images/sets/70998-38-35-close.jpg"
+             alt="Close‑up"
+             data-full="images/sets/70998-38-35-close.jpg">
+        <img src="images/sets/70998-38-room.jpg"
+             alt="Room view"
+             data-full="images/sets/70998-38-room.jpg">
+      </div>
+    </figure>
+
+    <!-- Details column -->
+    <section class="product-page__details">
+      <h2 class="product-page__title">Bladen</h2>
+      <p class="rating">★★★★☆ (4.4)</p>
+
+      <div class="color-picker">
+        <span class="label">Color:</span>
+        <button class="swatch swatch--coffee"   aria-label="Coffee"></button>
+        <button class="swatch swatch--chestnut" aria-label="Chestnut"></button>
+      </div>
+
+      <p class="price">$599.99</p>
+      <p class="finance-hint">or $9/mo w/ 72 mos in‑store financing</p>
+
+      <form class="pin-form" onsubmit="return false;">
+        <input id="pinInput" type="password" inputmode="numeric"
+               maxlength="6" placeholder="ENTER PIN" required>
+        <button type="submit" class="btn-primary">ENTER&nbsp;PIN</button>
+      </form>
+
+      <p class="model-number">Model&nbsp;7099835</p>
+      <p class="disclaimer">Local store prices and products may vary by location.</p>
+    </section>
+  </main>
+
+  <!-- Light‑box overlay -->
+  <div id="lightbox" hidden>
+    <button id="closeBtn" aria-label="Close">Z</button>
+    <img id="lightboxImg" alt="">
+  </div>
+
+  <!-- ░░ Scripts ░░ -->
+  <script>
+    /* ----- dummy PIN capture ----- */
+    document.querySelector('.pin-form').addEventListener('submit', e => {
+      const pin = document.getElementById('pinInput').value.trim();
+      if (pin) alert(`PIN "${pin}" captured – hook it to the backend later.`);
+      e.target.reset();
+    });
+
+    /* ----- gallery + light‑box ----- */
+    const thumbs   = document.querySelectorAll('.thumbs img');
+    const lb       = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeBtn');
+
+    function openBox(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt;
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';         // stop page scroll
+    }
+    function closeBox() {
+      lb.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    thumbs.forEach(t => t.addEventListener('click',
+      () => openBox(t.dataset.full, t.alt)
+    ));
+    closeBtn.addEventListener('click', closeBox);
+    lb.addEventListener('click', e => { if (e.target === lb) closeBox(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' || e.key.toLowerCase() === 'z') closeBox();
+    });
+  </script>
+
+  <footer>
+    <p>&copy; 2025 Elite Furniture. All rights reserved.</p>
+  </footer>
+</body>
+</html>

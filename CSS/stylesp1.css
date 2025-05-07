@@ -1,324 +1,187 @@
-/* =========================================================
-   0 ▸ Brand tokens (red ‑ black ‑ teal palette)
-   ========================================================= */
-   :root {
-    --clr-1: #c31212;   /* vivid red      */
-    --clr-2: #000000;   /* black          */
-    --clr-3: #08a3a9;   /* deep teal      */
-    --text:   #222;
-    --bg:     #f5f5f5;
-    --card:   #fff;
-    --border: #e2e2e2;
-    --radius: 0.55rem;
-    --shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  }
-  
-  /* Keyframes: gradient sweep & diagonal‑line drift */
-  @keyframes sweep {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  @keyframes moveLines {
-    0%   { background-position: 0 0; }
-    100% { background-position: 200% 0; }
-  }
-  
-  /* =========================================================
-     1 ▸ Global reset & typography
-     ========================================================= */
-  *, *::before, *::after { box-sizing: border-box; }
-  
-  body {
-    margin: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--text);
-    background: var(--bg);
-    line-height: 1.65;
-    scroll-behavior: smooth;
-  }
-  
-  /* =========================================================
-     2 ▸ Header
-     ========================================================= */
-  header {
-    --grad: linear-gradient(120deg, var(--clr-1), var(--clr-2), var(--clr-3));
-    background: var(--grad);
-    background-size: 300% 300%;
-    animation: sweep 14s linear infinite;
-    color: #fff;
-    padding: 2.5rem 0 2rem;
-    text-align: center;
-    position: relative;
-    box-shadow: var(--shadow);
-    overflow: hidden;
-  }
-  header::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-        45deg,
-        rgba(255,255,255,0.12) 0 2px,
-        transparent 2px 12px
-    );
-    background-size: 200% 200%;
-    animation: moveLines 8s linear infinite;
-    pointer-events: none;
-  }
-  header h1 {
-    margin: 0;
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    backdrop-filter: drop-shadow(2px 2px 4px rgba(0,0,0,.35));
-  }
-  
-  /* Navigation */
-  nav {
-    margin-top: 1.35rem;
-    backdrop-filter: blur(6px) saturate(180%);
-  }
-  nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 1.25rem;
-    list-style: none;
-    padding: 0.4rem 1rem;
-  }
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    position: relative;
-    padding: 0.45rem 0.8rem;
-    border-radius: 0.4rem;
-    transition: transform 0.25s, background 0.25s;
-  }
-  nav a::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: rgba(255, 255, 255, 0.15);
-    opacity: 0;
-    transition: opacity 0.25s;
-  }
-  nav a:hover,
-  nav a:focus-visible { transform: translateY(-2px); }
-  nav a:hover::after,
-  nav a:focus-visible::after { opacity: 1; }
-  
-  /* =========================================================
-     3 ▸ Footer
-     ========================================================= */
-  footer {
-    --grad: linear-gradient(135deg, var(--clr-1), var(--clr-2), var(--clr-3));
-    background: var(--grad);
-    background-size: 350% 350%;
-    animation: sweep 20s linear infinite;
-    color: #fdfdfd;
-    text-align: center;
-    padding: 2.75rem 1rem 3rem;
-    position: relative;
-  }
-  footer p { margin: 0; font-size: 0.95rem; font-weight: 500; }
-  footer::before {
-    content: "";
-    position: absolute;
-    top: -40px; left: 0;
-    width: 100%; height: 40px;
-    background: radial-gradient(circle at 50% -20px, transparent 36px, var(--bg) 37px);
-  }
-  
-  /* =========================================================
-     4 ▸ Base button
-     ========================================================= */
-  button {
-    background: var(--clr-1);
-    color: #fff;
-    border: none;
-    border-radius: 0.35rem;
-    padding: 0.6rem 1.2rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: transform 0.25s, background 0.25s;
-  }
-  button:hover,
-  button:focus-visible {
-    background: var(--clr-3);
-    transform: translateY(-2px);
-  }
-  
-  /* =========================================================
-     ▸ Catalog‑specific styles
-     ========================================================= */
-  
-  /* Banner */
-  .catalog-hero {
-    height: 260px;
-    background: url("../images/catalog-cover.jpg") center / cover,
-                var(--clr-3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    box-shadow: var(--shadow);
-  }
-  .catalog-hero::after {
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.35);
-  }
-  .catalog-hero .cover-text { position:relative; color:#fff; }
-  .catalog-hero h2 { margin:0; font-size:clamp(2rem,5vw,3rem); }
-  .catalog-hero p { margin:.35rem 0 0; font-weight:500; }
-  
-  /* Search */
-  .search-wrap {
-    margin:2.2rem auto 2rem;
-    max-width:450px;
-    position:relative;
-  }
-  #searchBar {
-    width:100%;
-    padding:.65rem 1rem .65rem 2.5rem;
-    font-size:1rem;
-    border:1px solid var(--border);
-    border-radius:2rem;
-    outline-color:var(--clr-3);
-    box-shadow:var(--shadow);
-    transition:border .25s, box-shadow .25s;
-  }
-  #searchBar:focus {
-    border-color:var(--clr-3);
-    box-shadow:0 0 0 3px rgba(8,163,169,.25);
-  }
-  .search-wrap::before {
-    content:"🔍";
-    position:absolute;
-    left:.9rem; top:50%;
-    transform:translateY(-50%);
-    font-size:1.05rem;
-    opacity:.6;
-  }
-  
-  /* Grid */
-  .catalog-container { max-width:1200px; margin:0 auto; padding:0 1rem 3rem; }
-  .product-grid {
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:2rem;
-  }
-  
-  /* Card */
-  .product-card {
-    display:flex;
-    flex-direction:column;
-    text-decoration:none;
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:1rem;
-    box-shadow:0 6px 18px rgba(0,0,0,.08);
-    overflow:hidden;
-    transition:transform .25s, box-shadow .25s;
-  }
-  .product-card:hover {
-    transform:translateY(-6px);
-    box-shadow:0 10px 26px rgba(0,0,0,.15);
-  }
-  
-  /* Image wrapper – taller (90%) */
-  .img-wrap {
-    position:relative;
-    width:100%;
-    padding-top:90%;          /* Height increased for better view */
-    overflow:hidden;
-    background:#eee;
-  }
-  .img-wrap img {
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center;
-  }
-  
-  .product-card h3 {
-    margin:1rem 1rem 0;
-    font-size:1.15rem;
-    color:var(--clr-3);
-  }
-  .product-card .price {
-    margin:.4rem 1rem 0;
-    font-weight:700;
-    color:var(--clr-1);
-  }
-  .product-card .model {
-    margin:0 1rem 1.2rem;
-    font-size:0.85rem;
-    font-weight:600;
-    color:var(--text);
-    opacity:.75;
-    text-align:right;
-  }
-  
-  /* =========================================================
-     Pagination – “Prev / Next” buttons
-     ========================================================= */
-  .pagination{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:1rem;
-    margin:2.5rem 0 3rem;
-    font-family:inherit;
-  }
-  
-  .pagination a,
-  .pagination .page-num{
-    font-size:1rem;
-  }
-  
-  /* Buttons */
-  .pagination a{
-    padding:.55rem 1.25rem;
-    border:2px solid #333;
-    border-radius:9999px;          /* pill‑shape */
-    text-decoration:none;
-    font-weight:600;
-    color:#333;
-    background:#fff;
-    transition:all .25s ease;
-  }
-  .pagination a:hover:not(.disabled){
-    background:#333;
-    color:#fff;
-    box-shadow:0 0 8px rgba(0,0,0,.15) inset;
-  }
-  
-  /* Disabled state */
-  .pagination .disabled{
-    opacity:.4;
-    pointer-events:none;
-    cursor:default;
-  }
-  
-  /* Page‑number text */
-  .pagination .page-num{
-    font-weight:500;
-    letter-spacing:.04em;
-  }
-  
-  /* Responsive */
-  @media (max-width:992px){
-    .product-grid{ grid-template-columns:repeat(2,1fr); }
-  }
-  @media (max-width:600px){
-    .product-grid{ grid-template-columns:1fr; }
-    #searchBar{ padding-left:2.3rem; }
-  }
-  
+/* ==============================================================================
+   Product.css  –  Single‑item page + catalog card styles
+   (hero fills full left column, thumbnails in one straight row, light‑box)
+   ==============================================================================*/
+
+/* ---------- brand tokens (keep in this file so it’s stand‑alone) ---------- */
+:root{
+  --clr-1:#c31212;         /* vivid red */
+  --clr-2:#000;
+  --clr-3:#08a3a9;
+  --radius:.55rem;
+  --shadow:0 4px 14px rgba(0,0,0,.08);
+  --bg:#f5f5f5;
+  --card:#fff;
+}
+
+/* ---------- base ---------- */
+body{
+  background:var(--bg);
+  color:#222;
+  font-family:system-ui,Arial,sans-serif;
+  line-height:1.45;
+}
+
+/* (optional) header quick‑style */
+header{
+  background:linear-gradient(135deg,#003e55,#006b7d);
+  color:#fff;text-align:center;padding:1.8rem 0;
+}
+header h1{font-size:2.4rem;letter-spacing:.05em;font-weight:700}
+nav ul{display:flex;gap:2rem;justify-content:center;margin-top:.8rem;list-style:none}
+nav a{color:#fff;text-decoration:none;font-weight:500}
+
+/* ========================================================================== */
+/*                               CATALOG CARDS                               */
+/* ========================================================================== */
+
+.product-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:2rem;
+  padding:3rem min(8vw,3rem);
+}
+
+.product-card{
+  display:flex;
+  flex-direction:column;
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;                 /* keeps img in rounded corners */
+  text-decoration:none;
+  transition:transform .2s;
+}
+.product-card:hover{transform:translateY(-4px)}
+
+.product-card .img-wrap{
+  width:100%;
+  padding-top:70%;                 /* 16 : 9‑ish aspect */
+  position:relative;
+  overflow:hidden;
+}
+.product-card .img-wrap img{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;                /* << keeps picture perfectly framed */
+}
+
+.product-card h3,
+.product-card .price,
+.product-card .model{
+  margin:.6rem 1rem 0;
+  color:var(--clr-3);
+  font-weight:700;
+}
+.product-card .price{color:var(--clr-1);margin-top:.2rem}
+.product-card .model{
+  margin:.4rem 1rem 1rem;
+  font-weight:500;
+  color:#666;
+}
+
+/* ========================================================================== */
+/*                       SINGLE‑ITEM (“product page”) LAYOUT                 */
+/* ========================================================================== */
+
+.product-page{
+  display:grid;
+  grid-template-columns:1fr 380px;
+  gap:4rem;
+  padding:3rem min(8vw,3rem);
+}
+@media(max-width:800px){
+  .product-page{grid-template-columns:1fr}
+  .product-page__details{margin-top:2rem}
+}
+
+/* ---------- LEFT COLUMN – HERO + THUMBS ---------- */
+.product-page__media{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+/* hero image */
+#heroImg{
+  width:100%;
+  max-width:100%;
+  max-height:550px;                /* keeps very tall images in check */
+  object-fit:cover;                /* << fits inside frame nicely */
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+
+/* thumbnail strip */
+.thumbs{
+  margin-top:1rem;
+  display:flex;
+  gap:.8rem;
+  overflow-x:auto;
+  padding-bottom:.2rem;
+}
+.thumbs img{
+  width:110px;height:110px;
+  object-fit:cover;
+  border-radius:var(--radius);
+  cursor:pointer;
+  opacity:.85;
+  transition:opacity .15s,transform .15s;
+}
+.thumbs img:hover{
+  opacity:1;
+  transform:scale(1.05);
+  outline:3px solid var(--clr-1);
+}
+
+/* ---------- RIGHT COLUMN – DETAILS ---------- */
+.product-page__details{
+  background:var(--card);
+  padding:2rem;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.product-page__title{font-size:1.9rem;margin-bottom:.3rem}
+.rating{margin:.3rem 0 1.2rem;font-size:.95rem}
+
+.color-picker{display:flex;align-items:center;gap:.4rem;margin-bottom:1.2rem}
+.color-picker .label{font-weight:600;margin-right:.4rem}
+.swatch{width:22px;height:14px;border:none;border-radius:4px;cursor:pointer}
+.swatch--coffee  {background:#5c3726}
+.swatch--chestnut{background:#4d1e15}
+
+.price{color:var(--clr-1);font-size:1.8rem;font-weight:700;margin:.4rem 0}
+.finance-hint{font-size:.9rem;color:#444;margin-bottom:1.6rem}
+
+.pin-form{display:flex;gap:.6rem;margin-bottom:1.6rem}
+.pin-form input{
+  flex:1;padding:.5rem .7rem;font-size:1rem;border:1px solid #ccc;border-radius:var(--radius)}
+.btn-primary{
+  background:var(--clr-1);color:#fff;border:none;border-radius:var(--radius);
+  padding:.55rem 1rem;font-weight:600;cursor:pointer}
+.btn-primary:hover{background:#a50e0e}
+
+.model-number{font-size:.9rem;margin-bottom:.5rem;color:#555}
+.disclaimer{font-size:.8rem;color:#666}
+
+/* ========================================================================== */
+/*                               LIGHT‑BOX                                   */
+/* ========================================================================== */
+#lightbox{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.85);
+  display:grid;place-items:center;
+  z-index:9999;
+}
+#lightbox[hidden]{display:none}
+#lightbox img{
+  width:95%;max-width:900px;max-height:90vh;
+  border-radius:var(--radius);
+  box-shadow:0 0 30px rgba(0,0,0,.6);
+}
+#closeBtn{
+  position:absolute;top:1.2rem;right:1.6rem;
+  width:2.2rem;height:2.2rem;border-radius:50%;
+  border:none;background:#fff;font-weight:700;cursor:pointer;
+  box-shadow:0 2px 8px rgba(0,0,0,.25);
+}
