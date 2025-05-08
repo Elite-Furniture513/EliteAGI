@@ -29,16 +29,17 @@
     <div class="menu-wrapper">
       <!-- ☰ icon -->
       <span class="menu-toggle" aria-label="Open menu">&#9776;</span>
-      <!-- clickable/hoverable label -->
+      <!-- label -->
       <span class="menu-label">MENU</span>
   
       <nav class="side-menu">
-        <a href="#">Home</a>
-        <a href="#">Calculator</a>
-        <a href="#">Terms&nbsp;&amp;&nbsp;Conditions</a>
+        <a href="index.html">Home</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="terms.html">Terms&nbsp;&amp;&nbsp;Conditions</a>
       </nav>
     </div>
   </header>
+  
   <!-- ───── Hero ───── -->
   <section class="hero">
     <h1><span id="animatedText">Furniture made for comfort</span></h1>
@@ -146,6 +147,20 @@
       document.getElementById("animatedText").textContent = phrases[idx];
     }, 3000);
   </script>
+<script>
+  // toggle .open on icon or label click / tap
+  document.querySelectorAll('.menu-toggle, .menu-label').forEach(el=>{
+    el.addEventListener('click', e=>{
+      e.stopPropagation();                      // don’t bubble to body
+      document.querySelector('.menu-wrapper').classList.toggle('open');
+    });
+  });
+
+  // close the menu when you tap/click anywhere else
+  document.body.addEventListener('click', ()=>{
+    document.querySelector('.menu-wrapper').classList.remove('open');
+  });
+</script>
 
 </body>
 </html>

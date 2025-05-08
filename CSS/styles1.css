@@ -1,351 +1,188 @@
-/* =========================================================
-   Elite Furniture – Delivery Quote Calculator Styles
-   ========================================================= */
-   :root {
-    --accent: #08a3a9; /* deep teal */
-    --primary: #2d3e34; /* dark greenish */
-    --danger: #c31212;  /* vivid red */
-    --text: #2d2d2d;
-    --bg: #f8f9f5;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    line-height: 1.5;
-  }
-  
-  /* ===== Header ===== */
-  header {
-    background-color: var(--primary);
-    color: #fff;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  header h1 {
-    font-size: 24px;
-    font-weight: 700;
-    margin: 0;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    position: relative;
-  }
-  
-  nav a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: width 0.3s;
-  }
-  
-  nav a:hover::after {
-    width: 100%;
-  }
-  
-  /* ===== Main ===== */
-  main {
-    padding: 60px 15px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* ===== Calculator Card ===== */
-  .calculator {
-    width: 100%;
-    max-width: 480px;
-    background: #fff;
-    border-radius: 16px;
-    padding: 40px 30px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-  }
-  
-  .calculator h2 {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--primary);
-    text-align: center;
-    margin-bottom: 25px;
-  }
-  
-  .calculator form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .calculator label {
-    font-weight: 600;
-    color: var(--text);
-  }
-  
-  .item-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  input[type="text"],
-  input[type="number"],
-  select {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 15px;
-    background: #fafafa;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  
-  input:focus,
-  select:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(8, 163, 169, 0.25);
-  }
-  
-  /* ===== Buttons ===== */
-  button {
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    padding: 12px 18px;
-    font-size: 15px;
-    font-weight: 600;
-    transition: background 0.3s, transform 0.2s, opacity 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-  }
-  
-  .add-btn {
-    background: var(--accent);
-    color: #fff;
-  }
-  
-  .clear-btn {
-    background: var(--danger);
-    color: #fff;
-  }
-  
-  button[type="submit"] {
-    background: var(--primary);
-    color: #fff;
-  }
-  
-  button:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-  }
-  
-  /* ===== Result ===== */
-  .result {
-    margin-top: 25px;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--primary);
-    text-align: center;
-  }
-  
-  /* ===== Footer ===== */
-  footer {
-    text-align: center;
-    padding: 30px;
-    background: var(--primary);
-    color: #fff;
-    margin-top: 60px;
-  }
-  
-  /* ===== Responsive ===== */
-  @media (max-width: 550px) {
-    .calculator {
-      padding: 30px 20px;
-    }
-  
-    nav ul {
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-  }
-  
-  /* ---------------------------------------------------------
-     OPTIONAL: Existing site sections (hero, products, etc.)
-     --------------------------------------------------------- */
-  .hero {
-    padding: 60px 20px;
-    background: #e7eae5;
-    text-align: center;
-  }
-  
-  .hero h1 {
-    font-size: 42px;
-    font-weight: 700;
-    color: #222;
-  }
-  
-  .hero p {
-    font-size: 20px;
-    color: #666;
-    margin-top: 10px;
-  }
-  
-  .products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    padding: 60px 20px;
-  }
-  
-  .item-box {
-    background: #fff;
-    border-radius: 16px;
-    padding: 25px;
-    width: 320px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: transform 0.3s ease;
-  }
-  
-  .item-box:hover {
-    transform: scale(1.04);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .item-text h3 {
-    font-size: 20px;
-    margin: 0 0 10px 0;
-  }
-  
-  .item-text p {
-    font-size: 14px;
-    color: #555;
-    margin: 0;
-  }
-  
-  /* Scrolling benefits strip */
-  .top-strip {
-    display: flex;
-    align-items: center;
-    background: #faf9f5;
-    padding: 10px 25px;
-    gap: 5px;
-    overflow: hidden;
-    margin-bottom: 20px;
-  }
-  
-  .why-elite-static {
-    font-weight: 600;
-    font-size: 15px;
-    color: #1e1e1e;
-    padding-right: 20px;
-    border-right: 1px solid #ccc;
-    white-space: nowrap;
-  }
-  
-  .elite-benefits-container {
-    overflow: hidden;
-    flex: 1;
-  }
-  
-  .elite-benefits-scroll {
-    display: inline-flex;
-    gap: 40px;
-    white-space: nowrap;
-    animation: scroll-left 20s linear infinite;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text);
-  }
-  
-  .benefit span {
-    margin-right: 6px;
-  }
-  
-  @keyframes scroll-left {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-  }
-  
-  /* Features grid */
-  .why-elite {
-    padding: 60px 20px;
-    background: #ffffff;
-    text-align: center;
-  }
-  
-  .section-title {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 40px;
-    color: var(--text);
-  }
-  
-  .features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-  }
-  
-  .feature-box {
-    background: #f7f7f7;
-    border-radius: 16px;
-    padding: 30px 20px;
-    width: 280px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .feature-box:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-  }
-  
-  .feature-box .icon img {
-    width: 40px;
-    margin-bottom: 15px;
-  }
-  
-  .feature-box h3 {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .feature-box p {
-    font-size: 14px;
-    color: #666;
-  }
-  
+/* ───────────────────────────────────────────────
+   ELITE FURNITURE – Calculator Page Styles
+   mirrors the main site’s palette and typography
+   ─────────────────────────────────────────────── */
+
+/* =========== BASE RESET & TOKENS =========== */
+*,
+*::before,
+*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --clr-red:#c31212;
+  --clr-black:#000;
+  --clr-teal:#08a3a9;
+  --bg:#f8f9f5;
+  --card:#fff;
+  --border:#e2e2e2;
+  --radius:.6rem;
+  --shadow:0 8px 20px rgba(0,0,0,.08);
+  --accent:#e91e63;
+  --accent2:#ff9800;
+}
+
+body{
+  font-family:'Helvetica Neue',Arial,sans-serif;
+  background:var(--bg);
+  color:#2d2d2d;
+  line-height:1.4;
+}
+
+/* =========== TOP STRIP (same as index) =========== */
+.top-strip{
+  display:flex;
+  align-items:center;
+  background:#faf9f5;
+  padding:10px 25px;
+  gap:5px;
+  overflow:hidden;
+  margin-bottom:20px;
+}
+.why-elite-static{
+  font-weight:600;
+  font-size:15px;
+  color:#1e1e1e;
+  padding-right:20px;
+  border-right:1px solid #ccc;
+  white-space:nowrap;
+}
+.elite-benefits-container{flex:1;overflow:hidden}
+.elite-benefits-scroll{
+  display:inline-flex;
+  gap:40px;
+  white-space:nowrap;
+  animation:scroll 20s linear infinite;
+  font-size:15px;font-weight:500;
+}
+@keyframes scroll{from{transform:translateX(100%)}to{transform:translateX(-100%)}}
+.benefit span{margin-right:6px}
+
+/* =========== HEADER (simplified) =========== */
+header{
+  background:#fff;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #eee;
+}
+.logo{font-size:24px;font-weight:bold}
+header nav ul,
+header nav a{list-style:none;text-decoration:none}
+header nav a{
+  margin:0 12px;
+  font-size:16px;
+  color:#2d2d2d;
+}
+header nav a:hover{color:var(--clr-teal)}
+
+/* =========== CALCULATOR CARD =========== */
+.calculator{
+  max-width:520px;
+  margin:50px auto 70px;
+  padding:40px 32px 32px;
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+}
+.calculator h2{
+  text-align:center;
+  font-size:26px;
+  font-weight:700;
+  margin-bottom:28px;
+  color:var(--clr-black);
+}
+
+/* ---------- form basics ---------- */
+.calculator form{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+.calculator label{
+  font-weight:600;
+  font-size:15px;
+}
+.calculator input[type=text],
+.calculator input[type=number],
+.calculator select{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  font-size:15px;
+  background:#fff;
+}
+.item-list{display:flex;flex-direction:column;gap:12px}
+
+/* ---------- add / clear buttons ---------- */
+.action-buttons{
+  display:flex;
+  gap:10px;
+}
+.add-btn,
+.clear-btn,
+.calculator button[type=submit]{
+  flex:1;
+  padding:10px 0;
+  border:none;
+  border-radius:8px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  transition:filter .2s ease;
+}
+.add-btn{
+  background:var(--clr-teal);
+  color:#fff;
+}
+.clear-btn{
+  background:var(--clr-red);
+  color:#fff;
+}
+.calculator button[type=submit]{
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:#fff;
+  margin-top:6px;
+}
+.add-btn:hover,
+.clear-btn:hover,
+.calculator button[type=submit]:hover{filter:brightness(1.08)}
+
+/* ---------- result box ---------- */
+.result{
+  margin-top:24px;
+  padding:18px 16px;
+  background:#e7eae5;
+  border-radius:8px;
+  font-weight:600;
+  text-align:center;
+}
+
+/* =========== FOOTER =========== */
+footer{
+  text-align:center;
+  padding:30px 20px;
+  background:#2d3e34;
+  color:#fff;
+  font-size:14px;
+}
+
+/* =========== SMALL SCREEN TWEAKS =========== */
+@media(max-width:480px){
+  .calculator{margin:35px 14px;padding:32px 24px}
+  .calculator h2{font-size:22px}
+  header nav a{margin:0 8px;font-size:14px}
+}
+/*  << everything you already had stays above... >>  */
+
+/* show chart nicely within the calculator card */
+#paymentChart{
+  width:100% !important;
+  height:280px !important;        /* fixed height for consistency */
+}
+
+/* mobile tweak */
+@media(max-width:480px){
+  #paymentChart{height:220px !important;}
+}
