@@ -2,180 +2,129 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Elite Furniture</title>
   <link rel="stylesheet" href="CSS/styles.css" />
 </head>
 <body>
 
-<div class="top-strip">
-  <div class="why-elite-static">Why Elite?</div>
-  <div class="elite-benefits-container">
-    <div class="elite-benefits-scroll">
-      <div class="benefit"><span>🛋️</span> Affordable Pricing</div>
-      <div class="benefit"><span>🚚</span> Next-Day Delivery</div>
-      <div class="benefit"><span>💳</span> Easy Financing</div>
-      <div class="benefit"><span>⭐</span> Trusted by Thousands</div>
-      <div class="benefit"><span>🛠️</span> Quality That Lasts</div>
+  <!-- Top strip ------------------------------------------------------>
+  <div class="top-strip">
+    <div class="why-elite-static">Why Elite?</div>
+    <div class="elite-benefits-container">
+      <div class="elite-benefits-scroll">
+        <div class="benefit"><span>🛋️</span> Affordable Pricing</div>
+        <div class="benefit"><span>🚚</span> Next‑Day Delivery</div>
+        <div class="benefit"><span>💳</span> Easy Financing</div>
+        <div class="benefit"><span>⭐</span> Trusted by Thousands</div>
+        <div class="benefit"><span>🛠️</span> Quality That Lasts</div>
+      </div>
     </div>
   </div>
-</div>
 
-<header>
-  <div class="logo">Elite Furniture</div>
-  <div class="menu-wrapper">
-    <div class="menu-toggle">&#9776;</div>
-    <nav class="side-menu">
-      <a href="#">Home</a>
-      <a href="#">Calculator</a>
-      <a href="#">Terms & Conditions</a>
-    </nav>
-  </div>
-</header>
+  <!-- Header --------------------------------------------------------->
+  <header>
+    <div class="logo">Elite Furniture</div>
+    <div class="menu-wrapper">
+      <div class="menu-toggle">&#9776;</div>
+      <nav class="side-menu">
+        <a href="#">Home</a>
+        <a href="#">Calculator</a>
+        <a href="#">Terms&nbsp;&amp;&nbsp;Conditions</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="hero">
-  <div class="hero-text">
+  <!-- Hero ----------------------------------------------------------->
+  <section class="hero">
     <h1><span id="animatedText">Furniture made for comfort</span></h1>
     <p>Customized comfort for your dream space</p>
-  </div>
-</section>
+  </section>
 
-<section class="products">
-  <!-- Living Room -->
-  <div class="item-box">
-    <div class="item-image">
-      <img src="livingroomtest.jpeg" alt="Living Room" />
-    </div>
-    <div class="item-text">
-      <h3>Living Room <span>Collection</span></h3>
-      <p>Modern, comfy, and affordable sofas to complete your living room.</p>
-    </div>
-    <div class="item-arrow">
-      <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-right.png"/>
-    </div>
-  </div>
+  <!-- Product cards -------------------------------------------------->
+  <section class="products">
 
-  <!-- Dining Room -->
-  <div class="item-box">
-    <div class="item-image">
-      <img src="https://cdn-icons-png.flaticon.com/512/1198/1198363.png" alt="Dining Icon" />
-    </div>
-    <div class="item-text">
-      <h3>Dining Room <span>Collection</span></h3>
-      <p>Elegant and functional dining sets for every family gathering.</p>
-    </div>
-    <div class="item-arrow">
-      <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-right.png"/>
-    </div>
-  </div>
-
-  <!-- Loveseat -->
-  <div class="item-box">
-    <div class="item-image">
-      <img src="https://cdn-icons-png.flaticon.com/512/706/706185.png" alt="Loveseat Icon" />
-    </div>
-    <div class="item-text">
-      <h3>Loveseat <span>Collection</span></h3>
-      <p>Perfect-sized loveseats for any room with next-day delivery.</p>
-    </div>
-    <div class="item-arrow">
-      <img src="https://img.icons8.com/ios-glyphs/30/000000/chevron-right.png"/>
-    </div>
-  </div>
-</section>
-
-
-<script>
-  const phrases = [
-    "Furniture made for comfort",
-    "Loveseats that fit your space",
-    "Sofas personalized to you",
-  ];
-  let i = 0;
-  const animatedText = document.getElementById("animatedText");
-
-  setInterval(() => {
-    i = (i + 1) % phrases.length;
-    animatedText.textContent = phrases[i];
-  }, 3000);
-</script>
-
-<section class="why-elite">
-  <h2 class="section-title">Why Choose Elite Furniture?</h2>
-  <div class="features">
-    <div class="feature-box">
-      <div class="icon">
-        <img src="https://img.icons8.com/ios-filled/50/delivery.png" alt="Delivery" />
+    <div class="item-box"
+         style="--cover:url('images/sets/11702-38-35-23-14-T829-PILLOW.jpg');">
+      <div class="item-text">
+        <h3>Living Room <span>Collection</span></h3>
+        <p>Modern, comfy, and affordable sofas to complete your living room.</p>
       </div>
-      <h3>Next-Day Delivery</h3>
-      <p>We bring your dream furniture to your doorstep — fast and hassle-free.</p>
     </div>
 
-    <div class="feature-box">
-      <div class="icon">
-        <img src="https://img.icons8.com/ios-filled/50/tags.png" alt="Affordable" />
+    <div class="item-box"
+         style="--cover:url('images/sets/12020-38-35-25-T212-13-PILLOW.jpg');">
+      <div class="item-text">
+        <h3>Dining Room <span>Collection</span></h3>
+        <p>Elegant and functional dining sets for every family gathering.</p>
       </div>
-      <h3>Affordable Luxury</h3>
-      <p>High-quality furniture without the high-end price tag. Comfort meets value.</p>
     </div>
 
-    <div class="feature-box">
-      <div class="icon">
-        <img src="https://img.icons8.com/ios-filled/50/thumb-up.png" alt="Trusted" />
+    <div class="item-box"
+         style="--cover:url('images/sets/12021-38-35-20-14-T251-13.jpg');">
+      <div class="item-text">
+        <h3>Loveseat <span>Collection</span></h3>
+        <p>Perfect‑sized loveseats with next‑day delivery.</p>
       </div>
-      <h3>Trusted Quality</h3>
-      <p>Thousands of happy customers and furniture built to last.</p>
     </div>
 
-    <div class="feature-box">
-      <div class="icon">
-        <img src="https://img.icons8.com/ios-filled/50/money.png" alt="Financing" />
+  </section>
+
+  <!-- Why Elite ------------------------------------------------------->
+  <section class="why-elite">
+    <h2 class="section-title">Why Choose Elite Furniture?</h2>
+    <div class="features">
+      <div class="feature-box">
+        <div class="icon"><img src="https://img.icons8.com/ios-filled/50/delivery.png" alt=""></div>
+        <h3>Next‑Day Delivery</h3>
+        <p>We bring your dream furniture to your doorstep—fast and hassle‑free.</p>
       </div>
-      <h3>Flexible Financing</h3>
-      <p>Easy payment plans that fit your budget — apply in minutes.</p>
+      <div class="feature-box">
+        <div class="icon"><img src="https://img.icons8.com/ios-filled/50/tags.png" alt=""></div>
+        <h3>Affordable Luxury</h3>
+        <p>High‑quality furniture without the high‑end price tag.</p>
+      </div>
+      <div class="feature-box">
+        <div class="icon"><img src="https://img.icons8.com/ios-filled/50/thumb-up.png" alt=""></div>
+        <h3>Trusted Quality</h3>
+        <p>Thousands of happy customers and furniture built to last.</p>
+      </div>
+      <div class="feature-box">
+        <div class="icon"><img src="https://img.icons8.com/ios-filled/50/money.png" alt=""></div>
+        <h3>Flexible Financing</h3>
+        <p>Easy payment plans that fit your budget—apply in minutes.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- New Meaningful Section -->
-<section class="meaning-section">
-  <h2 class="meaning-title">What Makes Elite Furniture Different</h2>
-  <div class="meaning-items">
-    <div class="meaning-box">
-      <h3>💡 Purpose-Driven</h3>
-      <p>We’re not just selling furniture — we’re helping families build comfort, one room at a time.</p>
+  <!-- Purpose -------------------------------------------------------->
+  <section class="meaning-section">
+    <h2 class="meaning-title">What Makes Elite Furniture Different</h2>
+    <div class="meaning-items">
+      <div class="meaning-box"><h3>💡 Purpose‑Driven</h3><p>Helping families build comfort, one room at a time.</p></div>
+      <div class="meaning-box"><h3>🛠️ Built to Last</h3><p>Crafted with care and materials made to stand the test of time.</p></div>
+      <div class="meaning-box"><h3>💬 Real Relationships</h3><p>We listen, we care, and we deliver more than just products.</p></div>
     </div>
+  </section>
 
-    <div class="meaning-box">
-      <h3>🛠️ Built to Last</h3>
-      <p>Our furniture is crafted with care and materials made to stand the test of time — not trends.</p>
-    </div>
+  <!-- Footer --------------------------------------------------------->
+  <footer class="footer">
+    &copy; 2025 Elite Furniture | Privacy | Delivery Info
+  </footer>
 
-    <div class="meaning-box">
-      <h3>💬 Real Relationships</h3>
-      <p>Every customer matters. We listen, we care, and we deliver more than just products.</p>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  &copy; 2025 Elite Furniture | Privacy | Delivery Info
-</footer>
-
-<script>
-  const phrases = [
-    "Sofas personalized to you",
-    "Loveseats that fit your space",
-    "Furniture made for comfort",
-  ];
-  let i = 0;
-  const animatedText = document.getElementById("animatedText");
-
-  setInterval(() => {
-    i = (i + 1) % phrases.length;
-    animatedText.textContent = phrases[i];
-  }, 3000);
-</script>
+  <!-- Rotating headline script -------------------------------------->
+  <script>
+    const phrases = [
+      "Furniture made for comfort",
+      "Loveseats that fit your space",
+      "Sofas personalized to you"
+    ];
+    let idx = 0;
+    setInterval(() => {
+      idx = (idx + 1) % phrases.length;
+      document.getElementById("animatedText").textContent = phrases[idx];
+    }, 3000);
+  </script>
 
 </body>
 </html>
