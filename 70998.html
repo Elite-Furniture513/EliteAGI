@@ -12,17 +12,46 @@
   <link rel="stylesheet" href="CSS/Product.css">
 </head>
 <body>
-  <!-- ░░ Header (re‑use from the rest of your site) ░░ -->
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elite Furniture</title>
+  <link rel="stylesheet" href="CSS/styles.css" />
+</head>
+<body>
+
+  <!-- ───── Top strip ───── -->
+  <div class="top-strip">
+    <div class="why-elite-static">Why Elite?</div>
+    <div class="elite-benefits-container">
+      <div class="elite-benefits-scroll">
+        <div class="benefit"><span>🛋️</span> Affordable Pricing</div>
+        <div class="benefit"><span>🚚</span> Next‑Day Delivery</div>
+        <div class="benefit"><span>💳</span> Easy Financing</div>
+        <div class="benefit"><span>⭐</span> Trusted by Thousands</div>
+        <div class="benefit"><span>🛠️</span> Quality That Lasts</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ───── Header ───── -->
   <header>
-    <h1>ELITE FURNITURE</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="Calclator.html">Calculator</a></li>
-        <li><a href="terms.html">Terms&nbsp;&amp;&nbsp;Conditions</a></li>
-        <li><a href="page1.html">Catalog</a></li>
-      </ul>
-    </nav>
+    <div href="index.html" class="logo">Elite Furniture</div>
+  
+    <div class="menu-wrapper">
+      <!-- ☰ icon -->
+      <span class="menu-toggle" aria-label="Open menu">&#9776;</span>
+      <!-- label -->
+      <span class="menu-label">MENU</span>
+  
+      <nav class="side-menu">
+        <a href="index.html">Home</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="terms.html">Terms&nbsp;&amp;&nbsp;Conditions</a>
+      </nav>
+    </div>
   </header>
 
   <!-- ░░ Product ░░ -->
@@ -114,8 +143,41 @@
     });
   </script>
 
-  <footer>
-    <p>&copy; 2025 Elite Furniture. All rights reserved.</p>
+  <!-- ───── Footer ───── -->
+  <footer class="footer">
+    &copy; 2025 Elite Furniture | Privacy | Delivery Info
   </footer>
+
+  <!-- Rotating headline script -->
+  <script>
+    const phrases = [
+      "Furniture made for comfort",
+      "Loveseats that fit your space",
+      "Sofas personalized to you"
+    ];
+    let idx = 0;
+    setInterval(() => {
+      idx = (idx + 1) % phrases.length;
+      document.getElementById("animatedText").textContent = phrases[idx];
+    }, 3000);
+  </script>
+<script>
+  // toggle .open on icon or label click / tap
+  document.querySelectorAll('.menu-toggle, .menu-label').forEach(el=>{
+    el.addEventListener('click', e=>{
+      e.stopPropagation();                      // don’t bubble to body
+      document.querySelector('.menu-wrapper').classList.toggle('open');
+    });
+  });
+
+  // close the menu when you tap/click anywhere else
+  document.body.addEventListener('click', ()=>{
+    document.querySelector('.menu-wrapper').classList.remove('open');
+  });
+</script>
+
+</body>
+</html>
+
 </body>
 </html>
