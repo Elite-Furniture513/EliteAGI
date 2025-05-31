@@ -1,140 +1,96 @@
 /* ────────────────────────────────────────────────────────────
    ELITE FURNITURE  •  FULL STYLESHEET
-   Updated: responsive header menu
-            – opens on hover for mouse devices
-            – opens on tap/click for touch devices
-            – product cards use object‑fit: cover
+   Updated: adds circular “Shop by Category” grid (item page)
+            – keeps all existing global & product-card styles
+            – responsive header menu unchanged
    ──────────────────────────────────────────────────────────── */
 
 /* ───────── BASE RESET ───────── */
-*,
-*::before,
-*::after { box-sizing: border-box; }
+*,*::before,*::after{box-sizing:border-box;}
 
 body{
   margin:0;
   font-family:'Helvetica Neue',Arial,sans-serif;
   background:#f8f9f5;
   color:#2d2d2d;
+  -webkit-font-smoothing:antialiased;
 }
 
 /* ───────── TOP STRIP ───────── */
 .top-strip{
-  display:flex;
-  align-items:center;
+  display:flex;align-items:center;
   background:#faf9f5;
   padding:10px 25px;
-  gap:5px;
-  overflow:hidden;
+  gap:5px;overflow:hidden;
   margin-bottom:20px;
 }
 .why-elite-static{
-  font-weight:600;
-  font-size:15px;
-  color:#1e1e1e;
-  padding-right:20px;
-  border-right:1px solid #ccc;
+  font-weight:600;font-size:15px;color:#1e1e1e;
+  padding-right:20px;border-right:1px solid #ccc;
   white-space:nowrap;
 }
 .elite-benefits-container{flex:1;overflow:hidden;}
 .elite-benefits-scroll{
-  display:inline-flex;
-  gap:40px;
-  white-space:nowrap;
+  display:inline-flex;gap:40px;white-space:nowrap;
   animation:scroll-left 20s linear infinite;
-  font-size:15px;
-  font-weight:500;
+  font-size:15px;font-weight:500;
 }
 @keyframes scroll-left{
-  from{transform:translateX(100%);}
-  to  {transform:translateX(-100%);}
+  from{transform:translateX(100%);}to{transform:translateX(-100%);}
 }
 .benefit span{margin-right:6px;}
 
 /* ───────── HEADER ───────── */
 header{
-  background:#fff;
-  padding:15px 30px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  background:#fff;padding:15px 30px;
+  display:flex;justify-content:space-between;align-items:center;
   border-bottom:1px solid #eee;
 }
 .logo{font-size:24px;font-weight:bold;}
 
-.menu-wrapper{
-  position:relative;
+.menu-wrapper{position:relative;}
+.menu-toggle,.menu-label{
+  cursor:pointer;user-select:none;
+  font-size:22px;padding:6px 8px;
 }
+.menu-label{font-size:18px;margin-left:4px;}
 
-/* icon & label share styles */
-.menu-toggle,
-.menu-label{
-  cursor:pointer;
-  user-select:none;
-  font-size:22px;                 /* icon size */
-  padding:6px 8px;
-}
-.menu-label{
-  font-size:18px;                 /* word size */
-  margin-left:4px;
-}
-
-/* side‑menu default hidden */
 .side-menu{
-  display:none;
-  position:absolute;
-  top:45px;
-  right:0;
-  background:#fff;
-  border:1px solid #ddd;
+  display:none;flex-direction:column;
+  position:absolute;top:45px;right:0;
+  background:#fff;border:1px solid #ddd;
   box-shadow:0 4px 12px rgba(0,0,0,.1);
-  flex-direction:column;
-  padding:10px 20px;
-  min-width:180px;
-  z-index:1000;
+  padding:10px 20px;min-width:180px;z-index:1000;
 }
 .side-menu a{
-  text-decoration:none;
-  color:#333;
-  padding:10px 0;
-  font-size:16px;
+  text-decoration:none;color:#333;
+  padding:10px 0;font-size:16px;
   border-bottom:1px solid #eee;
 }
 .side-menu a:last-child{border-bottom:none;}
 .side-menu a:hover{color:#000;}
-
-/* CLICK / TAP: toggled by JS */
 .menu-wrapper.open .side-menu{display:flex;}
 
-/* HOVER (desktop / pointer devices only) */
-@media (hover:hover) and (pointer:fine){
+@media(hover:hover) and (pointer:fine){
   .menu-wrapper:hover .side-menu{display:flex;}
 }
 
 /* ───────── HERO ───────── */
 .hero{
-  padding:60px 20px;
-  background:#e7eae5;
-  text-align:center;
+  padding:60px 20px;background:#e7eae5;text-align:center;
 }
 .hero h1{font-size:42px;font-weight:700;margin:0;}
 .hero p {font-size:20px;color:#666;margin-top:10px;}
 
-/* ───────── PRODUCT GRID ───────── */
+/* ───────── PRODUCT GRID (rectangular cards) ───────── */
 .products{
-  display:flex;
-  flex-wrap:wrap;
+  display:flex;flex-wrap:wrap;
   justify-content:center;
-  gap:25px;
-  padding:25px 20px;
+  gap:25px;padding:25px 20px;
 }
 .item-box{
-  width:425px;
-  height:350px;
-  border-radius:20px;
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
+  width:425px;height:350px;border-radius:20px;
+  position:relative;overflow:hidden;cursor:pointer;
   box-shadow:0 10px 20px rgba(0,0,0,.08);
   transition:transform .35s ease, box-shadow .35s ease;
 }
@@ -142,60 +98,67 @@ header{
   transform:translateY(-6px);
   box-shadow:0 14px 28px rgba(0,0,0,.15);
 }
-.item-photo{
-  width:100%;
-  height:100%;
-  object-fit:cover;          /* fill box, crop if needed */
-  display:block;
-}
+.item-photo{width:100%;height:100%;object-fit:cover;display:block;}
 .item-text{
-  position:absolute;
-  bottom:0;
-  left:0;
-  width:100%;
-  padding:10px 14px;
-  text-align:center;
-  background:rgba(60,60,60,.7);
-  color:#fff;
+  position:absolute;bottom:0;left:0;width:100%;
+  padding:10px 14px;text-align:center;
+  background:rgba(60,60,60,.7);color:#fff;
 }
-.item-text h3{
-  margin:0 0 4px;
-  font-size:20px;
-  font-weight:600;
-}
+.item-text h3{margin:0 0 4px;font-size:20px;font-weight:600;}
 .item-text h3 span{
   background:linear-gradient(to right,#e91e63,#ff9800);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
-.item-text p{
-  margin:0;
-  font-size:13px;
-  line-height:1.35;
+.item-text p{margin:0;font-size:13px;line-height:1.35;}
+
+/* ───────── NEW  •  CIRCULAR CATEGORY GRID ───────── */
+.category-section{padding:40px 20px;text-align:center;}
+.section-heading{
+  font-size:28px;font-weight:700;
+  margin-bottom:40px;
+}
+.category-grid{
+  display:flex;flex-wrap:wrap;
+  justify-content:center;
+  gap:50px 60px;               /* row gap | column gap */
+  max-width:1300px;margin:0 auto;
+}
+.category-card{
+  width:200px;text-decoration:none;color:#222;
+  display:flex;flex-direction:column;align-items:center;
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+.category-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 26px rgba(0,0,0,.12);
+}
+.circle{
+  width:200px;height:200px;border-radius:50%;
+  background:#efefef;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.circle img{
+  width:80%;height:auto;object-fit:contain;
+  display:block;
+}
+.category-card span{
+  margin-top:18px;font-size:17px;font-weight:600;
+  text-align:center;line-height:1.3;
 }
 
 /* ───────── WHY ELITE ───────── */
 .why-elite{
-  padding:60px 20px;
-  background:#fff;
-  text-align:center;
+  padding:60px 20px;background:#fff;text-align:center;
 }
-.section-title{
-  font-size:28px;
-  font-weight:bold;
-  margin-bottom:40px;
-}
+.section-title{font-size:28px;font-weight:bold;margin-bottom:40px;}
 .features{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
+  display:flex;flex-wrap:wrap;justify-content:center;
   gap:30px;
 }
 .feature-box{
-  background:#f7f7f7;
-  border-radius:16px;
-  padding:30px 20px;
-  width:280px;
+  background:#f7f7f7;border-radius:16px;
+  padding:30px 20px;width:280px;
   box-shadow:0 8px 18px rgba(0,0,0,.05);
   transition:transform .3s ease, box-shadow .3s ease;
 }
@@ -209,27 +172,16 @@ header{
 
 /* ───────── MEANING SECTION ───────── */
 .meaning-section{
-  padding:60px 20px;
-  background:#f1f3f0;
-  text-align:center;
+  padding:60px 20px;background:#f1f3f0;text-align:center;
 }
-.meaning-title{
-  font-size:30px;
-  font-weight:bold;
-  margin-bottom:40px;
-}
+.meaning-title{font-size:30px;font-weight:bold;margin-bottom:40px;}
 .meaning-items{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
+  display:flex;flex-wrap:wrap;justify-content:center;
   gap:30px;
 }
 .meaning-box{
-  background:#fff;
-  padding:25px 20px;
-  border-radius:16px;
-  width:280px;
-  box-shadow:0 8px 20px rgba(0,0,0,.05);
+  background:#fff;padding:25px 20px;border-radius:16px;
+  width:280px;box-shadow:0 8px 20px rgba(0,0,0,.05);
   transition:transform .3s ease;
 }
 .meaning-box:hover{transform:translateY(-6px);}
@@ -238,52 +190,41 @@ header{
 
 /* ───────── FOOTER ───────── */
 .footer{
-  text-align:center;
-  padding:30px;
-  background:#2d3e34;
-  color:#fff;
+  text-align:center;padding:30px;
+  background:#2d3e34;color:#fff;
 }
+
 /* ==== Centered column & card look ==== */
 .policy-wrapper{
-  max-width:900px;         /* readable line‑length            */
-  margin:40px auto 80px;   /* centering + bottom breathing room*/
-  padding:0 20px;          /* small side‑gutters on mobile     */
+  max-width:900px;margin:40px auto 80px;
+  padding:0 20px;
 }
 .policy-wrapper section{
-  background:#fff;
-  border-radius:12px;
-  padding:30px 28px 26px;
-  margin-bottom:32px;
+  background:#fff;border-radius:12px;
+  padding:30px 28px 26px;margin-bottom:32px;
   box-shadow:0 8px 20px rgba(0,0,0,.05);
 }
-
-/* ==== Section headings with gradient text ==== */
 .policy-wrapper h2{
-  margin:0 0 16px;
-  font-size:24px;
-  font-weight:700;
+  margin:0 0 16px;font-size:24px;font-weight:700;
   background:linear-gradient(90deg,#e91e63,#ff9800);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
-
-/* ==== Ordered‑list spacing ==== */
 .policy-wrapper ol{margin-left:18px;}
 .policy-wrapper ol li{margin-bottom:10px;}
-
-/* ==== Paragraphs inside cards ==== */
 .policy-wrapper p{margin:0 0 10px;}
-
-/* ==== Closing thank‑you blurb ==== */
 .closing{
-  text-align:center;
-  font-size:18px;
-  font-weight:600;
+  text-align:center;font-size:18px;font-weight:600;
   margin-top:60px;
 }
 .closing em{font-size:15px;color:#666;}
 
 /* ==== Mobile tweaks ==== */
+@media(max-width:520px){
+  .category-grid{gap:40px 30px;}
+  .circle{width:160px;height:160px;}
+  .category-card{width:160px;}
+  .category-card span{font-size:15px;}
+}
 @media(max-width:480px){
   .policy-wrapper{margin:30px 0 60px;}
   .policy-wrapper h2{font-size:21px;}
