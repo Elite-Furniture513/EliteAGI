@@ -229,3 +229,155 @@ header{
   .policy-wrapper{margin:30px 0 60px;}
   .policy-wrapper h2{font-size:21px;}
 }
+/* ——— CATEGORY CIRCLES: make images fill the round frame ——— */
+.circle{
+  position: relative;           /* so the img can be absolutely centred */
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;             /* hides any bits outside the circle */
+}
+
+.circle img{
+  position: absolute;
+  inset: 0;                     /* stretch edge-to-edge */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* zoom/crop to fill the circle */
+  object-position: center;      /* keep subject centred */
+  display: block;
+}
+
+/* ───────── CATALOG LAYOUT ───────── */
+.catalog-page{
+  display:grid;
+  grid-template-columns:260px 1fr; /* 260-px sidebar | flexible list */
+  gap:40px;
+  padding:25px;                   /* space around whole grid */
+}
+
+/* left sidebar placeholder */
+.filter-panel{
+  background:#ffffff;
+  border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,.06);
+  padding:25px 20px;
+  font-family:inherit;
+  min-height:400px;
+}
+
+/* make product cards flow two-up on desktop, one-up on mobile */
+.catalog-products .products{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);   /* exactly two per row */
+  gap:35px 30px;                         /* row | column */
+}
+
+/* ensure cards stretch nicely inside grid cells */
+.catalog-products .item-box{
+  width:100%;
+  height:350px;    /* keep your existing aspect */
+}
+
+/* ─── Responsive tweaks ─── */
+@media(max-width:900px){
+  .catalog-page{grid-template-columns:200px 1fr;}
+}
+
+@media(max-width:760px){
+  .catalog-page{
+    grid-template-columns:1fr;           /* stack filter on top */
+  }
+  .filter-panel{margin-bottom:30px;}
+  .catalog-products .products{
+    grid-template-columns:1fr;           /* single column cards */
+  }
+}
+/* ════════════════════════════════════════════════════════════
+   SOFA PAGE – overrides applied only when <body class="sofa-page">
+   • Two-column grid with fixed sidebar
+   • Portrait product cards (300 px tall image)
+   • Name + price strip replaces the old overlay
+   ════════════════════════════════════════════════════════════ */
+
+body.sofa-page .catalog-page{
+  display:grid;
+  grid-template-columns:260px 1fr;   /* sidebar | product list */
+  gap:40px;
+  padding:25px;
+}
+
+/* Sidebar box */
+body.sofa-page .filter-panel{
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,.06);
+  padding:25px 20px;
+  min-height:400px;
+}
+
+/* Product grid – exactly two cards per row on desktop */
+body.sofa-page .catalog-products .products{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(260px,1fr));
+  gap:35px 30px;                 /* row | column */
+}
+
+/* Card container */
+body.sofa-page .item-box{
+  display:flex;
+  flex-direction:column;
+  border-radius:18px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 10px 20px rgba(0,0,0,.08);
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+body.sofa-page .item-box:hover{
+  transform:translateY(-6px);
+  box-shadow:0 14px 28px rgba(0,0,0,.15);
+}
+
+/* Sofa image */
+body.sofa-page .item-photo{
+  width:100%;
+  height:300px;                 /* portrait aspect */
+  object-fit:cover;
+  display:block;
+}
+
+/* Hide the overlay text used on other pages */
+body.sofa-page .item-text{display:none;}
+
+/* Name & price block */
+body.sofa-page .item-info{
+  padding:14px 10px 18px;
+  text-align:center;
+}
+body.sofa-page .item-info h3{
+  margin:0;
+  font-size:17px;
+  font-weight:600;
+  color:#222;
+}
+body.sofa-page .item-info .price{
+  display:block;
+  margin-top:6px;
+  font-size:15px;
+  font-weight:600;
+  color:#e91e63;                /* brand accent */
+}
+
+/* —— Responsive: stack sidebar & single-column products —— */
+@media(max-width:760px){
+  body.sofa-page .catalog-page{grid-template-columns:1fr;}
+  body.sofa-page .filter-panel{margin-bottom:30px;}
+  body.sofa-page .catalog-products .products{grid-template-columns:1fr;}
+}
+body.sofa-page .item-photo{
+  width:100%;
+  height:300px;          /* fixed portrait slot */
+  object-fit:contain;    /* show whole image, keep aspect ratio */
+  object-position:center;
+  background:#f5f5f5;    /* subtle backdrop behind letter-box bars */
+}

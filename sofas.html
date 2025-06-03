@@ -3,35 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elite Furniture</title>
+  <title>Elite Furniture | Sofas</title>
+
+  <!-- Global stylesheet that already holds your base styles -->
   <link rel="stylesheet" href="CSS/styles.css" />
 </head>
-<body>
+
+<body class="sofa-page"><!-- page-identifier class -->
 
   <!-- ───── Top strip ───── -->
   <div class="top-strip">
-    <div class="why-elite-static">Why Elite?</div>
+    <div class="why-elite-static">Why Elite?</div>
     <div class="elite-benefits-container">
       <div class="elite-benefits-scroll">
-        <div class="benefit"><span>🛋️</span> Affordable Pricing</div>
-        <div class="benefit"><span>🚚</span> Next‑Day Delivery</div>
-        <div class="benefit"><span>💳</span> Easy Financing</div>
-        <div class="benefit"><span>⭐</span> Trusted by Thousands</div>
-        <div class="benefit"><span>🛠️</span> Quality That Lasts</div>
+        <div class="benefit"><span>🛋️</span> Affordable Pricing</div>
+        <div class="benefit"><span>🚚</span> Next-Day Delivery</div>
+        <div class="benefit"><span>💳</span> Easy Financing</div>
+        <div class="benefit"><span>⭐</span> Trusted by Thousands</div>
+        <div class="benefit"><span>🛠️</span> Quality That Lasts</div>
       </div>
     </div>
   </div>
 
   <!-- ───── Header ───── -->
   <header>
-    <div href="index.html" class="logo">Elite Furniture</div>
-  
+    <a href="index.html" class="logo">Elite Furniture</a>
+
     <div class="menu-wrapper">
-      <!-- ☰ icon -->
       <span class="menu-toggle" aria-label="Open menu">&#9776;</span>
-      <!-- label -->
       <span class="menu-label">MENU</span>
-  
+
       <nav class="side-menu">
         <a href="index.html">Home</a>
         <a href="calculator.html">Calculator</a>
@@ -40,61 +41,81 @@
     </div>
   </header>
 
-<!-- the first sectoion-->
- <section class="products">
-
-    <!-- 1 ▸ normal Sofas -->
-    <a href="normel sofas.html" class="item-box">
-      <img class="item-photo" src="images/sets/11702-38-35-23-14-T829-PILLOW.jpg" alt="Sofas">
-      <div class="item-text"><h3>Sofas <span>Collection</span></h3></div>
-    </a>
-
-    <!-- 2 ▸ reclining  -->
-    <a href="reclining.html" class="item-box">
-      <img class="item-photo" src="images/sets/11702-38-35-23-14-T829-PILLOW.jpg" alt="Loveseats">
-      <div class="item-text"><h3>Reclining sofas <span>Collection</span></h3></div>
-    </a>
-
-    
-
+  <!-- ───── Category hero ───── -->
+  <section class="hero">
+    <h1>Shop Sofas</h1>
+    <p>Comfort-first seating for every style &amp; budget</p>
   </section>
 
+  <!-- ───── Grid: sidebar + product cards ───── -->
+  <div class="catalog-page">
 
+    <aside class="filter-panel">
+      <h3>Filter</h3>
+      <p>(Coming&nbsp;soon)</p>
+    </aside>
 
+    <main class="catalog-products">
+      <section class="products">
 
+        <!-- Sofa 1 -->
+        <a href="70998.html" class="item-box">
+          <img class="item-photo" src="images/Sofa/70998-38.jpg" alt="Beamer Sofa">
+          <div class="item-info">
+            <h3>Beamer Sofa</h3>
+            <span class="price">$ 499</span>
+          </div>
+        </a>
 
-   <!-- ───── Footer ───── -->
+        <!-- Sofa 2 -->
+        <a href="71798.html" class="item-box">
+          <img class="item-photo" src="images/Sofa/71798-38-HEAD-ON-SW.jpg" alt="Twin Harbor Sofa">
+          <div class="item-info">
+            <h3>Twin Harbor</h3>
+            <span class="price">$ 429</span>
+          </div>
+        </a>
+
+        <!-- Sofa 3 -->
+        <a href="71802.html" class="item-box">
+          <img class="item-photo" src="images/Sofa/71802-38.jpg" alt="Altari Stone Sofa">
+          <div class="item-info">
+            <h3>Altari Stone</h3>
+            <span class="price">$ 499</span>
+          </div>
+        </a>
+
+        <!-- Sofa 4 -->
+        <a href="872143.html" class="item-box">
+          <img class="item-photo" src="images/Sofa/8721438.jpg" alt="Darcy Sky Sofa">
+          <div class="item-info">
+            <h3>Darcy Sky</h3>
+            <span class="price">$ 459</span>
+          </div>
+        </a>
+
+        <!-- …add more sofas as needed… -->
+
+      </section>
+    </main>
+
+  </div><!-- /catalog-page -->
+
+  <!-- ───── Footer ───── -->
   <footer class="footer">
-    &copy; 2025 Elite Furniture | Privacy | Delivery Info
+    &copy; 2025 Elite Furniture | Privacy | Delivery Info
   </footer>
 
-  <!-- Rotating headline script -->
+  <!-- ───── Mobile-menu toggle ───── -->
   <script>
-    const phrases = [
-      "Furniture made for comfort",
-      "Loveseats that fit your space",
-      "Sofas personalized to you"
-    ];
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % phrases.length;
-      document.getElementById("animatedText").textContent = phrases[idx];
-    }, 3000);
-  </script>
-<script>
-  // toggle .open on icon or label click / tap
-  document.querySelectorAll('.menu-toggle, .menu-label').forEach(el=>{
-    el.addEventListener('click', e=>{
-      e.stopPropagation();                      // don’t bubble to body
-      document.querySelector('.menu-wrapper').classList.toggle('open');
+    document.querySelectorAll('.menu-toggle,.menu-label').forEach(el=>{
+      el.addEventListener('click',e=>{
+        e.stopPropagation();
+        document.querySelector('.menu-wrapper').classList.toggle('open');
+      });
     });
-  });
-
-  // close the menu when you tap/click anywhere else
-  document.body.addEventListener('click', ()=>{
-    document.querySelector('.menu-wrapper').classList.remove('open');
-  });
-</script>
+    document.body.addEventListener('click',()=>document.querySelector('.menu-wrapper').classList.remove('open'));
+  </script>
 
 </body>
 </html>
