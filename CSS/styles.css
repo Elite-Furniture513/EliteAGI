@@ -134,7 +134,7 @@ header{
 }
 .circle{
   width:200px;height:200px;border-radius:50%;
-  background:#f8f9f5;
+  background:#efefef;
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;
 }
@@ -228,18 +228,4 @@ header{
 @media(max-width:480px){
   .policy-wrapper{margin:30px 0 60px;}
   .policy-wrapper h2{font-size:21px;}
-}
-/* ─── Make category thumbnails fill the circle cleanly ─── */
-.circle {
-  position: relative;           /* ensures centering works the same everywhere   */
-  overflow: hidden;             /* guarantees nothing spills outside the circle  */
-}
-
-.circle img{
-  width:100%;                   /* let the image fill the whole box …            */
-  height:100%;                  /* … in both directions                          */
-  object-fit:contain;           /* keep the entire item visible (no cropping!)   */
-  object-position:center;       /* always center it inside the circle            */
-  padding:6%;                   /* fine-tune the “breathing room” around items   */
-  /* ↑ adjust the % up/down if some pictures still feel cramped or too small */
 }
