@@ -5,47 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bladen Sofa – Elite Furniture</title>
 
-  <!-- global site styles (keep your own) -->
+  <!-- global site styles -->
   <link rel="stylesheet" href="CSS/styles.css">
 
-  <!-- page‑specific gallery / light‑box styles -->
-  <link rel="stylesheet" href="CSS/Product.css">
-</head>
-<body>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elite Furniture</title>
-  <link rel="stylesheet" href="CSS/styles.css" />
+  <!-- product-page styles (gallery, accordion, light-box) -->
+  <link rel="stylesheet" href="CSS/product.css">
 </head>
 <body>
 
-  <!-- ───── Top strip ───── -->
+  <!-- ░░ Top strip ░░ -->
   <div class="top-strip">
-    <div class="why-elite-static">Why Elite?</div>
+    <div class="why-elite-static">Why Elite?</div>
     <div class="elite-benefits-container">
       <div class="elite-benefits-scroll">
-        <div class="benefit"><span>🛋️</span> Affordable Pricing</div>
-        <div class="benefit"><span>🚚</span> Next‑Day Delivery</div>
-        <div class="benefit"><span>💳</span> Easy Financing</div>
-        <div class="benefit"><span>⭐</span> Trusted by Thousands</div>
-        <div class="benefit"><span>🛠️</span> Quality That Lasts</div>
+        <div class="benefit"><span>🛋️</span> Affordable Pricing</div>
+        <div class="benefit"><span>🚚</span> Next-Day Delivery</div>
+        <div class="benefit"><span>💳</span> Easy Financing</div>
+        <div class="benefit"><span>⭐</span> Trusted by Thousands</div>
+        <div class="benefit"><span>🛠️</span> Quality That Lasts</div>
       </div>
     </div>
   </div>
 
-  <!-- ───── Header ───── -->
+  <!-- ░░ Header ░░ -->
   <header>
-    <div href="index.html" class="logo">Elite Furniture</div>
-  
+    <a href="index.html" class="logo">Elite Furniture</a>
+
     <div class="menu-wrapper">
-      <!-- ☰ icon -->
       <span class="menu-toggle" aria-label="Open menu">&#9776;</span>
-      <!-- label -->
       <span class="menu-label">MENU</span>
-  
+
       <nav class="side-menu">
         <a href="index.html">Home</a>
         <a href="calculator.html">Calculator</a>
@@ -54,31 +43,31 @@
     </div>
   </header>
 
-  <!-- ░░ Product ░░ -->
+ <!-- ░░ Product ░░ -->
   <main class="product-page">
     <!-- Media column -->
     <figure class="product-page__media">
       <img id="heroImg"
-           src="images/Sofa/71798-38-HEAD-ON-SW.jpg"
+           src="images/sets/71798-38-35.jpg"
            alt="Bladen sofa & loveseat in living‑room setting">
 
       <!-- Thumbnails – add / remove as many as you want -->
       <div class="thumbs">
-        <img src="images/Sofa/71798-38-HEAD-ON-SW.jpg"
+        <img src="images/sets/71798-38-35.jpg"
              alt="Main view"
-             data-full="images/Sofa/71798-38-HEAD-ON-SW.jpg">
-        <img src="images/sets/70998-38-35-close.jpg"
+             data-full="images/sets/7198-38-35.jpg">
+        <img src="images/Sofa/71798-38-HEAD-ON-SW.jpg"
              alt="Close‑up"
-             data-full="images/sets/70998-38-35-close.jpg">
-        <img src="images/sets/70998-38-room.jpg"
+             data-full="images/sofa/71798-38-HEAD-ON-SW.jpg">
+        <img src="images/Loveseat/71798-35-HEAD-ON-SW.jpg"
              alt="Room view"
-             data-full="images/sets/70998-38-room.jpg">
+             data-full="images/loveseat/71798-35-HEAD-ON-SW.jpg">
       </div>
     </figure>
 
-    <!-- Details column -->
+    <!-- ─── Details column ─── -->
     <section class="product-page__details">
-      <h2 class="product-page__title">Twin Harbor Sofa</h2>
+      <h2 class="product-page__title">Bladen</h2>
       <p class="rating">★★★★☆ (4.4)</p>
 
       <div class="color-picker">
@@ -88,7 +77,7 @@
       </div>
 
       <p class="price">$599.99</p>
-      <p class="finance-hint">or $9/mo w/ 72 mos in‑store financing</p>
+      <p class="finance-hint">or $9/mo w/ 72 mos in-store financing</p>
 
       <form class="pin-form" onsubmit="return false;">
         <input id="pinInput" type="password" inputmode="numeric"
@@ -96,88 +85,97 @@
         <button type="submit" class="btn-primary">ENTER&nbsp;PIN</button>
       </form>
 
-      <p class="model-number">Model&nbsp;7099835</p>
+      <p class="model-number">Model 7099835</p>
       <p class="disclaimer">Local store prices and products may vary by location.</p>
     </section>
+
+    <!-- ─── Accordion panels (span full width) ─── -->
+    <section class="product-info" style="grid-column:1/-1;">
+      <details class="accordion">
+        <summary>Description</summary>
+        <p>
+          With its handsomely weathered-leather look and hearty construction,
+          the Bladen collection delivers big style on a down-to-earth budget.
+          High-resiliency foam cushions wrapped in thick poly fiber create
+          sink-in comfort, while a corner-blocked frame stands up to busy
+          family life.
+        </p>
+      </details>
+
+      <details class="accordion">
+        <summary>Dimensions</summary>
+        <ul>
+          <li>Sofa: 90" W × 36" D × 38" H</li>
+          <li>Loveseat: 68" W × 36" D × 38" H</li>
+          <li>Seat height: 20"   •   Arm height: 26"</li>
+        </ul>
+      </details>
+    </section>
+
   </main>
 
-  <!-- Light‑box overlay -->
+  <!-- ░░ Light-box overlay ░░ -->
   <div id="lightbox" hidden>
-    <button id="closeBtn" aria-label="Close">Z</button>
+    <button id="closeBtn" aria-label="Close">×</button>
     <img id="lightboxImg" alt="">
   </div>
 
-  <!-- ░░ Scripts ░░ -->
+  <!-- ░░ JavaScript ░░ -->
   <script>
-    /* ----- dummy PIN capture ----- */
+    /* ——— PIN placeholder ——— */
     document.querySelector('.pin-form').addEventListener('submit', e => {
-      const pin = document.getElementById('pinInput').value.trim();
+      const pin = pinInput.value.trim();
       if (pin) alert(`PIN "${pin}" captured – hook it to the backend later.`);
       e.target.reset();
     });
 
-    /* ----- gallery + light‑box ----- */
-    const thumbs   = document.querySelectorAll('.thumbs img');
+    /* ——— Gallery logic ——— */
+    const heroImg = document.getElementById('heroImg');
+    const thumbs  = document.querySelectorAll('.thumbs img');
+
+    thumbs.forEach(t => t.addEventListener('click', () => {
+      heroImg.src = t.dataset.full;
+      heroImg.alt = t.alt;
+      document.querySelector('.thumbs img.active')?.classList.remove('active');
+      t.classList.add('active');
+    }));
+
+    /* ——— Light-box ——— */
     const lb       = document.getElementById('lightbox');
     const lbImg    = document.getElementById('lightboxImg');
     const closeBtn = document.getElementById('closeBtn');
 
-    function openBox(src, alt) {
+    function openBox(src, alt){
       lbImg.src = src;
       lbImg.alt = alt;
       lb.hidden = false;
-      document.body.style.overflow = 'hidden';         // stop page scroll
+      document.body.style.overflow = 'hidden';
     }
-    function closeBox() {
+    function closeBox(){
       lb.hidden = true;
       document.body.style.overflow = '';
     }
 
-    thumbs.forEach(t => t.addEventListener('click',
-      () => openBox(t.dataset.full, t.alt)
-    ));
+    heroImg.addEventListener('click', () => openBox(heroImg.src, heroImg.alt));
     closeBtn.addEventListener('click', closeBox);
     lb.addEventListener('click', e => { if (e.target === lb) closeBox(); });
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape' || e.key.toLowerCase() === 'z') closeBox();
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBox(); });
+
+    /* ——— Mobile menu toggle ——— */
+    document.querySelectorAll('.menu-toggle, .menu-label').forEach(el=>{
+      el.addEventListener('click', e=>{
+        e.stopPropagation();
+        document.querySelector('.menu-wrapper').classList.toggle('open');
+      });
+    });
+    document.body.addEventListener('click', ()=> {
+      document.querySelector('.menu-wrapper').classList.remove('open');
     });
   </script>
 
-  <!-- ───── Footer ───── -->
+  <!-- ░░ Footer ░░ -->
   <footer class="footer">
-    &copy; 2025 Elite Furniture | Privacy | Delivery Info
+    &copy; 2025 Elite Furniture | Privacy | Delivery Info
   </footer>
-
-  <!-- Rotating headline script -->
-  <script>
-    const phrases = [
-      "Furniture made for comfort",
-      "Loveseats that fit your space",
-      "Sofas personalized to you"
-    ];
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % phrases.length;
-      document.getElementById("animatedText").textContent = phrases[idx];
-    }, 3000);
-  </script>
-<script>
-  // toggle .open on icon or label click / tap
-  document.querySelectorAll('.menu-toggle, .menu-label').forEach(el=>{
-    el.addEventListener('click', e=>{
-      e.stopPropagation();                      // don’t bubble to body
-      document.querySelector('.menu-wrapper').classList.toggle('open');
-    });
-  });
-
-  // close the menu when you tap/click anywhere else
-  document.body.addEventListener('click', ()=>{
-    document.querySelector('.menu-wrapper').classList.remove('open');
-  });
-</script>
-
-</body>
-</html>
-
 </body>
 </html>
