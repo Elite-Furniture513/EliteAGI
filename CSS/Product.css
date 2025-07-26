@@ -177,3 +177,61 @@
   font-size:.93rem;
   line-height:1.45;
 }
+/* Main color picker container */
+.color-picker {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Label next to the color picker */
+.label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Individual swatch container (image + label) */
+.swatch-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Anchor-style swatch links */
+.swatch-link {
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+  text-decoration: none; /* removes underline */
+}
+
+/* Hover effect on swatch */
+.swatch-link:hover {
+  transform: scale(1.05);
+}
+
+/* Swatch image inside the link */
+.swatch-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Label shown under each swatch */
+.swatch-label {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
