@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bladen Sofa – Elite Furniture</title>
+  <title>Kirkhill Set – Elite Furniture</title>
 
   <!-- global site styles -->
   <link rel="stylesheet" href="CSS/styles.css">
@@ -62,52 +62,66 @@
         <img src="images/Loveseat/70998-35.jpg"
              alt="Room view"
              data-full="images/loveseat/70998-35.jpg">
+         <img src="images/Colors/70998-SWATCH-BODY.jpg"
+             alt="Room view"
+             data-full="images/Colors/70998-SWATCH-BODY.jpg">
       </div>
     </figure>
 
     <!-- ─── Details column ─── -->
-    <section class="product-page__details">
-      <h2 class="product-page__title">Bladen</h2>
-      <p class="rating">★★★★☆ (4.4)</p>
+<section class="product-page__details">
+  <h2 class="product-page__title">Kirkhill Set</h2>
+  <p class="rating">★★★★☆ (4.4)</p>
 
-      <div class="color-picker">
-        <span class="label">Color:</span>
-        <button class="swatch swatch--coffee"   aria-label="Coffee"></button>
-        <button class="swatch swatch--chestnut" aria-label="Chestnut"></button>
-      </div>
+ <p class="price" style="display: none;">$999.99</p>
 
-      <p class="price">$599.99</p>
-      <p class="finance-hint">or $9/mo w/ 72 mos in-store financing</p>
 
-      <form class="pin-form" onsubmit="return false;">
-        <input id="pinInput" type="password" inputmode="numeric"
-               maxlength="6" placeholder="ENTER PIN" required>
-        <button type="submit" class="btn-primary">ENTER&nbsp;PIN</button>
-      </form>
+  <!-- Updated PIN + Price Flexibility Form -->
+  <form class="pin-form" onsubmit="return false;">
+    <input id="pinInput" type="password" inputmode="numeric"
+           maxlength="6" placeholder="ENTER WORKER PIN" required>
+    <input id="flexInput" type="number" min="1" max="10"
+           placeholder="PRICE FLEXIBILITY (1–10)" required>
+    <button type="submit" class="btn-primary">GET&nbsp;PRICE</button>
+  </form>
 
-      <p class="model-number">Model 7099835</p>
-      <p class="disclaimer">Local store prices and products may vary by location.</p>
-    </section>
+  <p class="model-number">Model 70998</p>
+  <p class="disclaimer">Local store prices and products may vary by location.</p>
+</section>
 
     <!-- ─── Accordion panels (span full width) ─── -->
     <section class="product-info" style="grid-column:1/-1;">
       <details class="accordion">
         <summary>Description</summary>
-        <p>
-          With its handsomely weathered-leather look and hearty construction,
-          the Bladen collection delivers big style on a down-to-earth budget.
-          High-resiliency foam cushions wrapped in thick poly fiber create
-          sink-in comfort, while a corner-blocked frame stands up to busy
-          family life.
+       
+      <H1>. Overview</H1>  
+         <p>The Kirkhill Sand Living Room Set from the Kirkhill Collection by Ashley Furniture offers a contemporary style, polyester/PU upholstery and Sand color.
+      <H1>. Features</H1> 
+        <p>Contemporary Style</p>
+        <p>Sand Color</p>
+        <p>Polyester 98%, PU 2% Upholstery</p>
+      <h1>. Series</h1> 
+        <p>No70998</p>
+      <h1>. Department</h1>
+        <p>Signature Design by Ashley Living Room Sets</p>
+      <H1>. Color</H1> 
+        <p>Sand</p>
+      <H1>. Default Set Includes</H1>
+        <P>1 x Kirkhill Sand Sofa</P>
+        <P>1 x Kirkhill Sand Loveseat</P>
+      <H1>. Weight </H1>
+        <P>233 lb</P>
+Note: Some Assembly May be Required
+
+Please Note: Sizes and weights are approximate and may vary slightly from the ones given above. Due to differences in monitors, we cannot be responsible for variations in color between the actual item and your screen. Please be advised that we display the standard shape and(or) size in some cases; the shapes, sizes, patterns and colors may vary.
         </p>
       </details>
 
       <details class="accordion">
         <summary>Dimensions</summary>
         <ul>
-          <li>Sofa: 90" W × 36" D × 38" H</li>
-          <li>Loveseat: 68" W × 36" D × 38" H</li>
-          <li>Seat height: 20"   •   Arm height: 26"</li>
+         <LI>Kirkhill Sand Sofa 129 lb W-89" D-38" H-39"</LI>
+          <LI>Kirkhill Sand Loveseat 104 lb W-61" D-38" H-39"</LI>
         </ul>
       </details>
     </section>
@@ -172,7 +186,11 @@
       document.querySelector('.menu-wrapper').classList.remove('open');
     });
   </script>
+<!-- Pricing + PIN Data -->
+<script src="script/pricingData.js"></script>
 
+<!-- Logic to handle PINs and pricing -->
+<script src="script/pinLogic.js"></script>
   <!-- ░░ Footer ░░ -->
   <footer class="footer">
     &copy; 2025 Elite Furniture | Privacy | Delivery Info
