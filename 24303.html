@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dunmor Set – Elite Furniture</title>
+
+  <!-- global site styles -->
+  <link rel="stylesheet" href="CSS/styles.css">
+
+  <!-- product-page styles (gallery, accordion, light-box) -->
+  <link rel="stylesheet" href="CSS/product.css">
+</head>
+<body>
+
+  <!-- ░░ Top strip ░░ -->
+  <div class="top-strip">
+    <div class="why-elite-static">Why Elite?</div>
+    <div class="elite-benefits-container">
+      <div class="elite-benefits-scroll">
+        <div class="benefit"><span>🛋️</span> Affordable Pricing</div>
+        <div class="benefit"><span>🚚</span> Next-Day Delivery</div>
+        <div class="benefit"><span>💳</span> Easy Financing</div>
+        <div class="benefit"><span>⭐</span> Trusted by Thousands</div>
+        <div class="benefit"><span>🛠️</span> Quality That Lasts</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ░░ Header ░░ -->
+  <header>
+    <a href="index.html" class="logo">Elite Furniture</a>
+
+    <div class="menu-wrapper">
+      <span class="menu-toggle" aria-label="Open menu">&#9776;</span>
+      <span class="menu-label">MENU</span>
+
+      <nav class="side-menu">
+        <a href="index.html">Home</a>
+        <a href="calculator.html">Calculator</a>
+        <a href="terms.html">Terms&nbsp;&amp;&nbsp;Conditions</a>
+      </nav>
+    </div>
+  </header>
+
+ <!-- ░░ Product ░░ -->
+  <main class="product-page">
+    <!-- Media column -->
+    <figure class="product-page__media">
+      <img id="heroImg"
+           src="images/sets/24303-38-35-T285-13.jpg"
+           alt="Bladen sofa & loveseat in living‑room setting">
+
+      <!-- Thumbnails – add / remove as many as you want -->
+      <div class="thumbs">
+        <img src="images/sets/24303-38-35-T285-13.jpg"
+             alt="Main view"
+             data-full="images/sets/24303-38-35-T285-13.jpg">
+        <img src="images/Sofa/24303-38.jpg"
+             alt="Close‑up"
+             data-full="images/Sofa/24203-38.jpg">
+        <img src="images/Loveseat/24203-35.jpg"
+             alt="Room view"
+             data-full="images/Loveseat/24203-35.jpg">
+         <img src="images/Colors/24203-BODY-A-SWATCH.jpg"
+             alt="Room view"
+             data-full="images/Colors/24203-BODY-A-SWATCH.jpg">
+      </div>
+    </figure>
+
+    <!-- ─── Details column ─── -->
+<section class="product-page__details">
+  <h2 class="product-page__title">Dunmor Set</h2>
+  <p class="rating">★★★★★ (4.9)</p>
+  <div class="color-picker">
+  <span class="label">Color:</span>
+
+  <!-- Black Swatch -->
+  <div class="swatch-container">
+    <a href="black-page.html" class="swatch-link" title="Black">
+      <img src="images/Colors/24204-BODY-A-SWATCH.jpg" alt="Black swatch" class="swatch-img">
+    </a>
+    <span class="swatch-label">Black</span>
+  </div>
+
+  <!-- Blue Swatch -->
+  <div class="swatch-container">
+    <a href="blue-page.html" class="swatch-link" title="Blue">
+      <img src="images/Colors/24205-BODY-A-SWATCH.jpg" alt="Blue swatch" class="swatch-img">
+    </a>
+    <span class="swatch-label">Blue</span>
+  </div>
+</div>
+
+ <p class="price" style="display: none;">$999.99</p>
+
+
+  <!-- Updated PIN + Price Flexibility Form -->
+  <form class="pin-form" onsubmit="return false;">
+    <input id="pinInput" type="password" inputmode="numeric"
+           maxlength="6" placeholder="ENTER WORKER PIN" required>
+    <input id="flexInput" type="number" min="1" max="10"
+           placeholder="PRICE FLEXIBILITY (1–10)" required>
+    <button type="submit" class="btn-primary">GET&nbsp;PRICE</button>
+  </form>
+
+  <p class="model-number">Model 24203</p>
+ 
+</section>
+
+    <!-- ─── Accordion panels (span full width) ─── -->
+    <section class="product-info" style="grid-column:1/-1;">
+      <details class="accordion">
+        <summary>Description</summary>
+       
+      <H1>. Overview</H1>  
+         <p>The SimpleJoy set is a cozy interpretation of casual contemporary style. Its super-soft corduroy makes curling up with a book or your favorite show that much more comfortable. You're sure to appreciate its sincere styling and homey approach to relaxation.</p>
+      <H1>. Features</H1> 
+        <p>Contemporary Style</p>
+        <p>Sand Color</p>
+        <p>Polyester 100%</p>
+      <h1>. Series</h1> 
+        <p>No 24203</p>
+      <h1>. Department</h1>
+        <p>Signature Design by Ashley Living Room Sets</p>
+      <H1>. Color</H1> 
+        <p>Sand</p>
+      <H1>. Default Set Includes</H1>
+        <P>1 x SimpleJoy Sand Sofa</P>
+        <P>1 x SimpleJoy Sand Loveseat</P>
+      <H1>. Weight </H1>
+        <P>235 lb</P>
+<p>Note: Some Assembly May be Required</p>
+
+<p>Please Note: Sizes and weights are approximate and may vary slightly from the ones given above. Due to differences in monitors, we cannot be responsible for variations in color between the actual item and your screen. Please be advised that we display the standard shape and(or) size in some cases; the shapes, sizes, patterns and colors may vary.</p>
+        </p>
+      </details>
+
+      <details class="accordion">
+        <summary>Dimensions</summary>
+        <ul>
+         <LI> SimpleJoy Sand Sofa 130 lb W-83" D-38" H-40"</LI>
+          <LI>SimpleJoy Sand Loveseat 98 lb W-63" D-38" H-40"</LI>
+        </ul>
+      </details>
+    </section>
+
+  </main>
+
+  <!-- ░░ Light-box overlay ░░ -->
+  <div id="lightbox" hidden>
+    <button id="closeBtn" aria-label="Close">×</button>
+    <img id="lightboxImg" alt="">
+  </div>
+
+  <!-- ░░ JavaScript ░░ -->
+  <script>
+    /* ——— PIN placeholder ——— */
+    document.querySelector('.pin-form').addEventListener('submit', e => {
+      const pin = pinInput.value.trim();
+      if (pin) alert(`PIN "${pin}" captured – hook it to the backend later.`);
+      e.target.reset();
+    });
+
+    /* ——— Gallery logic ——— */
+    const heroImg = document.getElementById('heroImg');
+    const thumbs  = document.querySelectorAll('.thumbs img');
+
+    thumbs.forEach(t => t.addEventListener('click', () => {
+      heroImg.src = t.dataset.full;
+      heroImg.alt = t.alt;
+      document.querySelector('.thumbs img.active')?.classList.remove('active');
+      t.classList.add('active');
+    }));
+
+    /* ——— Light-box ——— */
+    const lb       = document.getElementById('lightbox');
+    const lbImg    = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeBtn');
+
+    function openBox(src, alt){
+      lbImg.src = src;
+      lbImg.alt = alt;
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function closeBox(){
+      lb.hidden = true;
+      document.body.style.overflow = '';
+    }
+
+    heroImg.addEventListener('click', () => openBox(heroImg.src, heroImg.alt));
+    closeBtn.addEventListener('click', closeBox);
+    lb.addEventListener('click', e => { if (e.target === lb) closeBox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBox(); });
+
+    /* ——— Mobile menu toggle ——— */
+    document.querySelectorAll('.menu-toggle, .menu-label').forEach(el=>{
+      el.addEventListener('click', e=>{
+        e.stopPropagation();
+        document.querySelector('.menu-wrapper').classList.toggle('open');
+      });
+    });
+    document.body.addEventListener('click', ()=> {
+      document.querySelector('.menu-wrapper').classList.remove('open');
+    });
+  </script>
+<!-- Pricing + PIN Data -->
+<script src="script/pricingData.js"></script>
+
+<!-- Logic to handle PINs and pricing -->
+<script src="script/pinLogic.js"></script>
+  <!-- ░░ Footer ░░ -->
+  <footer class="footer">
+    &copy; 2025 Elite Furniture | Privacy | Delivery Info
+  </footer>
+</body>
+</html>
