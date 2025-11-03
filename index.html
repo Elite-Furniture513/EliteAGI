@@ -1,157 +1,203 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elite Furniture</title>
-  <link rel="stylesheet" href="CSS/styles.css" />
-  <link rel="icon" type="image/png" href="images/logos/logo.png" sizes="32x32" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ELITE — Retail Calculator (v4)</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <script defer src="app.js"></script>
 </head>
 <body>
+  <header class="topbar">
+    <div class="brand">ELITE</div>
+    <div class="top-actions">
+      <label class="assoc">Associate
+        <input id="associate" placeholder="Your name" autocomplete="name"/>
+      </label>
+      <button id="btnMode" class="btn ghost" title="Switch between Normal / Financing / Layaway">Change Mode</button>
+      <button id="btnNew" class="btn ghost">New Quote</button>
+      <button id="btnQuote" class="btn primary">Print Quote</button>
+    </div>
+  </header>
 
-  <!-- ───── Top strip ───── -->
-  <div class="top-strip">
-    <div class="why-elite-static">Why Elite?</div>
-    <div class="elite-benefits-container">
-      <div class="elite-benefits-scroll">
-        <div class="benefit"><span>🛋️</span> Affordable Pricing</div>
-        <div class="benefit"><span>🚚</span> Next‑Day Delivery</div>
-        <div class="benefit"><span>💳</span> Easy Financing</div>
-        <div class="benefit"><span>⭐</span> Trusted by Thousands</div>
-        <div class="benefit"><span>🛠️</span> Quality That Lasts</div>
+  <main class="container">
+    <section class="crumbs" aria-label="Steps">
+      <div class="crumb"><span class="n">1</span> Items</div>
+      <div class="crumb"><span class="n">2</span> Delivery & Assembly</div>
+      <div class="crumb" id="crumbMode"><span class="n">3</span> <span class="crumbModeText">Payment</span></div>
+      <div class="crumb"><span class="n">4</span> Review</div>
+    </section>
+
+    <section class="mode-banner">
+      <strong>Mode:</strong>
+      <strong id="modeLabel">—</strong>
+      <span class="muted" id="modeHint"></span>
+    </section>
+
+    <!-- STEP 1: ITEMS -->
+    <section class="panel">
+      <div class="panel-title-row">
+        <h2 class="panel-title">Step 1 — Items</h2>
+        <div class="quick-add">
+          <span class="muted">Quick add:</span>
+          <button class="chip" data-template="Rug">Rug</button>
+          <button class="chip" data-template="Living Room Set">Living Room Set</button>
+          <button class="chip" data-template="Bedroom Set">Bedroom Set</button>
+          <button class="chip" data-template="Dining Table">Dining Table</button>
+          <button class="chip" data-template="Canopy Bed">Canopy Bed</button>
+        </div>
+        <div>
+          <button id="btnAddRow" class="btn">＋ Add Item</button>
+          <button id="btnClearRows" class="btn danger">✖ Clear</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="items">
+          <thead>
+            <tr><th>#</th><th>Qty</th><th>Description</th><th>Unit</th><th>Line</th><th></th></tr>
+          </thead>
+          <tbody id="itemsBody"></tbody>
+        </table>
+      </div>
+
+      <div class="notes-wrap">
+        <label>Description / Notes (shows on quote)
+          <textarea id="notes" rows="3" placeholder="e.g., Color, size, model #, delivery instructions"></textarea>
+        </label>
+      </div>
+    </section>
+
+    <!-- STEP 2: DELIVERY & ASSEMBLY -->
+    <section class="panel">
+      <h2 class="panel-title">Step 2 — Delivery & Assembly</h2>
+      <div class="grid three">
+        <label class="checkbox"><input id="includeDelivery" type="checkbox" checked/> Include Delivery — <strong>$139 flat</strong></label>
+        <div></div><div></div>
+      </div>
+      <div class="assembly-grid">
+        <div class="assembly-item">
+          <div>Dining Room Table</div>
+          <div class="muted">$25 each</div>
+          <div class="stepper"><button class="step minus" data-target="assmDining">−</button><input type="number" id="assmDining" class="qty" min="0" step="1" value="0"/><button class="step plus" data-target="assmDining">+</button></div>
+        </div>
+        <div class="assembly-item">
+          <div>Living Room Set</div>
+          <div class="muted">$15 each</div>
+          <div class="stepper"><button class="step minus" data-target="assmLiving">−</button><input type="number" id="assmLiving" class="qty" min="0" step="1" value="0"/><button class="step plus" data-target="assmLiving">+</button></div>
+        </div>
+        <div class="assembly-item">
+          <div>Bedroom Set</div>
+          <div class="muted">$25 each</div>
+          <div class="stepper"><button class="step minus" data-target="assmBedroom">−</button><input type="number" id="assmBedroom" class="qty" min="0" step="1" value="0"/><button class="step plus" data-target="assmBedroom">+</button></div>
+        </div>
+        <div class="assembly-item">
+          <div>Canopy Bed</div>
+          <div class="muted">$150 each</div>
+          <div class="stepper"><button class="step minus" data-target="assmCanopy">−</button><input type="number" id="assmCanopy" class="qty" min="0" step="1" value="0"/><button class="step plus" data-target="assmCanopy">+</button></div>
+        </div>
+      </div>
+      <p class="micro muted">Per Elite policy, **tax is only on merchandise** — delivery & assembly are not taxed.</p>
+    </section>
+
+    <!-- STEP 3: MODE-SPECIFIC -->
+    <section id="financingPanel" class="panel hide">
+      <h2 class="panel-title">Step 3 — Financing (Koalafi)</h2>
+      <div class="grid three">
+        <label>Customer Approved Amount
+          <input id="approved" type="number" min="0" step="0.01" value="0"/>
+        </label>
+        <div class="info-block">
+          <label class="checkbox"><input id="finDel" type="checkbox"/> Finance Delivery</label>
+          <label class="checkbox"><input id="finAssm" type="checkbox"/> Finance Assembly</label>
+          <div class="micro muted">Approval is applied in order: <strong>Items → Delivery → Assembly</strong>.</div>
+        </div>
+        <div class="info-block">
+          <div>Financed: <strong id="financedTotal">$0.00</strong></div>
+          <div class="micro muted" id="financeBreakdown">Items $0 • Delivery $0 • Assembly $0</div>
+        </div>
+      </div>
+      <div class="grid three">
+        <div class="info-block">
+          <div>Cash portion (items): <strong id="cashItems">$0.00</strong></div>
+          <div class="micro muted">Items not covered by approval</div>
+        </div>
+        <div class="info-block">
+          <div>Cash due today: <strong id="cashDue">$0.00</strong></div>
+          <div class="micro muted">Cash due = cash items + 8% tax on cash items + delivery not financed + assembly not financed</div>
+        </div>
+        <div class="info-block">
+          <div>Approval remaining / short: <strong id="approvalStatus">$0.00</strong></div>
+          <div class="micro muted">Positive = remaining; negative = short</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="layawayPanel" class="panel hide">
+      <h2 class="panel-title">Step 3 — Layaway</h2>
+      <div class="grid three">
+        <div class="info-block">
+          <div>10% down payment: <strong id="layawayDown">$0.00</strong></div>
+          <div>Balance after down: <strong id="layawayBalance">$0.00</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 4: REVIEW -->
+    <section class="panel totals">
+      <h2 class="panel-title">Step 4 — Review</h2>
+      <div id="totalsExplain" class="micro muted"></div>
+      <div class="totals-grid">
+        <div class="row"><span>Subtotal (items)</span><strong id="subtotal">$0.00</strong></div>
+        <div class="row"><span>Sales Tax (8% on items)</span><strong id="tax">$0.00</strong></div>
+        <div class="row"><span>Delivery</span><strong id="delivery">$139.00</strong></div>
+        <div class="row"><span>Assembly</span><strong id="assembly">$0.00</strong></div>
+        <div class="row grand"><span id="grandLabel">Total</span><strong id="grandTotal">$0.00</strong></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mode chooser modal (high-contrast, big targets, keyboard shortcuts) -->
+  <div id="modeModal" class="backdrop visible" aria-hidden="false">
+    <div class="modal modal-bright" role="dialog" aria-modal="true" aria-labelledby="modeTitle">
+      <h3 id="modeTitle">Select how the customer is paying</h3>
+      <p class="modal-sub">Press <strong>1</strong> = Normal · <strong>2</strong> = Financing · <strong>3</strong> = Layaway &nbsp;•&nbsp; <span class="muted">Enter to select • Esc to close</span></p>
+      <div class="mode-cards">
+        <button class="card big" data-mode="cash" role="button" tabindex="0" aria-label="Normal Payment (1)">
+          <div class="card-icon">💵</div>
+          <div class="card-title">Normal Payment</div>
+          <div class="card-sub">8% tax + $139 delivery + assembly</div>
+          <div class="kbd">1</div>
+        </button>
+        <button class="card big" data-mode="financing" role="button" tabindex="0" aria-label="Financing (2)">
+          <div class="card-icon">💳</div>
+          <div class="card-title">Financing (Koalafi)</div>
+          <div class="card-sub">Use approval to finance items and (optionally) delivery & assembly.</div>
+          <div class="kbd">2</div>
+        </button>
+        <button class="card big" data-mode="layaway" role="button" tabindex="0" aria-label="Layaway (3)">
+          <div class="card-icon">🗓️</div>
+          <div class="card-title">Layaway</div>
+          <div class="card-sub">10% down today, remainder later.</div>
+          <div class="kbd">3</div>
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- ───── Header ───── -->
-  <header>
-    <div href="index.html" class="logo">Elite Furniture</div>
-  
-    <div class="menu-wrapper">
-      <!-- ☰ icon -->
-      <span class="menu-toggle" aria-label="Open menu">&#9776;</span>
-      <!-- label -->
-      <span class="menu-label">MENU</span>
-  
-      <nav class="side-menu">
-        <a href="index.html">Home</a>
-        <a href="calculator.html">Calculator</a>
-        <a href="terms.html">Terms&nbsp;&amp;&nbsp;Conditions</a>
-      </nav>
+  <!-- Sticky summary bar -->
+  <div id="summaryBar" class="summary-bar" role="status" aria-live="polite">
+    <div class="sum-left">
+      <div class="sum-mode"><strong id="sumMode">—</strong></div>
+      <div class="sum-hint muted" id="sumHint">—</div>
     </div>
-  </header>
-  
-  <!-- ───── Hero ───── -->
-<section class="hero">
-    <h1><span id="animatedText">Furniture made for comfort</span></h1>
-    <p>Customized comfort for your dream space</p>
-  </section>
- 
-
-  <!-- ───── Product cards ───── -->
-  <section class="products">
-
-    <a href="Livngroom.html" class="item-box">
-      <img class="item-photo"
-           src="images/sets/11702-38-35-23-14-T829-PILLOW.jpg"
-           alt="Living room collection">
-      <div class="item-text">
-        <h3>Living Room <span>Collection</span></h3>
-        <p>Modern, comfy, and affordable sofas to complete your living room.</p>
-      </div>
-    </a>
-  
-    <a href="diningroomsets.html" class="item-box">
-      <img class="item-photo"
-           src="images/sets/12020-38-35-25-T212-13-PILLOW.jpg"
-           alt="Dining room collection">
-      <div class="item-text">
-        <h3>Dining Room <span>Collection</span></h3>
-        <p>Elegant and functional dining sets for every family gathering.</p>
-      </div>
-    </a>
-  
-    <a href="bedroom.html" class="item-box">
-      <img class="item-photo"
-           src="images/sets/12021-38-35-20-14-T251-13.jpg"
-           alt="Loveseat collection">
-      <div class="item-text">
-        <h3>Loveseat <span>Collection</span></h3>
-        <p>Perfect‑sized loveseats with next‑day delivery.</p>
-      </div>
-    </a>
-  
-  </section>
-
-  <!-- ───── Why Elite ───── -->
-  <section class="why-elite">
-    <h2 class="section-title">Why Choose Elite Furniture?</h2>
-    <div class="features">
-      <div class="feature-box">
-        <div class="icon"><img src="https://img.icons8.com/ios-filled/50/delivery.png" alt=""></div>
-        <h3>Next‑Day Delivery</h3>
-        <p>We bring your dream furniture to your doorstep — fast and hassle‑free.</p>
-      </div>
-      <div class="feature-box">
-        <div class="icon"><img src="https://img.icons8.com/ios-filled/50/tags.png" alt=""></div>
-        <h3>Affordable Luxury</h3>
-        <p>High‑quality furniture without the high‑end price tag.</p>
-      </div>
-      <div class="feature-box">
-        <div class="icon"><img src="https://img.icons8.com/ios-filled/50/thumb-up.png" alt=""></div>
-        <h3>Trusted Quality</h3>
-        <p>Thousands of happy customers and furniture built to last.</p>
-      </div>
-      <div class="feature-box">
-        <div class="icon"><img src="https://img.icons8.com/ios-filled/50/money.png" alt=""></div>
-        <h3>Flexible Financing</h3>
-        <p>Easy payment plans that fit your budget — apply in minutes.</p>
-      </div>
+    <div class="sum-right">
+      <div class="sum-label" id="sumLabel">Total</div>
+      <div class="sum-value" id="sumValue">$0.00</div>
+      <button id="sumPrint" class="btn primary">Print Quote</button>
     </div>
-  </section>
+  </div>
 
-  <!-- ───── Purpose ───── -->
-  <section class="meaning-section">
-    <h2 class="meaning-title">What Makes Elite Furniture Different</h2>
-    <div class="meaning-items">
-      <div class="meaning-box"><h3>💡 Purpose‑Driven</h3><p>Helping families build comfort, one room at a time.</p></div>
-      <div class="meaning-box"><h3>🛠️ Built to Last</h3><p>Crafted with care and materials made to stand the test of time.</p></div>
-      <div class="meaning-box"><h3>💬 Real Relationships</h3><p>We listen, we care, and we deliver more than just products.</p></div>
-    </div>
-  </section>
-
-  <!-- ───── Footer ───── -->
-  <footer class="footer">
-    &copy; 2025 Elite Furniture | Privacy | Delivery Info
-  </footer>
-
-  <!-- Rotating headline script -->
-  <script>
-    const phrases = [
-      "Furniture made for comfort",
-      "Loveseats that fit your space",
-      "Sofas personalized to you"
-    ];
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % phrases.length;
-      document.getElementById("animatedText").textContent = phrases[idx];
-    }, 3000);
-  </script>
-<script>
-  // toggle .open on icon or label click / tap
-  document.querySelectorAll('.menu-toggle, .menu-label').forEach(el=>{
-    el.addEventListener('click', e=>{
-      e.stopPropagation();                      // don’t bubble to body
-      document.querySelector('.menu-wrapper').classList.toggle('open');
-    });
-  });
-
-  // close the menu when you tap/click anywhere else
-  document.body.addEventListener('click', ()=>{
-    document.querySelector('.menu-wrapper').classList.remove('open');
-  });
-</script>
-
+  <footer class="footer"><small>© ELITE — Private store tool. Runs locally.</small></footer>
 </body>
 </html>
